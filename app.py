@@ -13,89 +13,102 @@ st.set_page_config(
     layout="centered"
 )
 
-# 注入專業級 CSS 樣式
+# 注入頂級 UI/UX 專業 CSS 樣式
 st.markdown("""
     <style>
     .main-header {
-        background: linear-gradient(135deg, #002D62 0%, #004080 100%);
-        padding: 25px 15px;
-        border-radius: 12px;
+        background: linear-gradient(135deg, #001F3F 0%, #003366 50%, #004080 100%);
+        padding: 30px 20px;
+        border-radius: 14px;
         color: white;
         text-align: center;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-bottom: 25px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
     .main-title {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 5px;
-        letter-spacing: 0.5px;
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
     }
     .sub-title {
-        font-size: 0.95rem;
+        font-size: 1rem;
         color: #FFD700;
         font-weight: 400;
+        letter-spacing: 0.5px;
     }
     .info-card {
-        background-color: #F8F9FA;
-        border-left: 5px solid #002D62;
-        padding: 18px;
-        border-radius: 8px;
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-left: 6px solid #003366;
+        padding: 22px;
+        border-radius: 10px;
         height: 100%;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
     .action-card {
-        background-color: #F0F4F8;
-        border: 2px solid #002D62;
-        padding: 18px;
-        border-radius: 8px;
+        background: #F8FAFC;
+        border: 1px solid #CBD5E1;
+        border-left: 6px solid #D32F2F;
+        padding: 22px;
+        border-radius: 10px;
         height: 100%;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
     .number-ball {
         display: inline-block;
-        width: 42px;
-        height: 42px;
-        line-height: 42px;
-        background: radial-gradient(circle at 30% 30%, #FF4D4D, #CC0000);
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        background: radial-gradient(circle at 30% 30%, #FF5252, #C62828);
         color: white;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-weight: bold;
         border-radius: 50%;
         text-align: center;
-        margin: 5px;
-        box-shadow: 0 3px 6px rgba(204,0,0,0.3);
+        margin: 6px;
+        box-shadow: 0 4px 8px rgba(198,40,40,0.35);
     }
     .nav-box {
-        background-color: #EBF3FA;
-        border: 1px solid #B8D4F0;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
+        background: linear-gradient(135deg, #F0F4F8 0%, #E2E8F0 100%);
+        border: 1px solid #CBD5E1;
+        border-top: 5px solid #003366;
+        padding: 24px;
+        border-radius: 12px;
+        margin-top: 25px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .map-btn {
         display: inline-block;
-        background-color: #002D62;
+        background-color: #003366;
         color: white !important;
-        padding: 10px 18px;
-        border-radius: 6px;
+        padding: 12px 20px;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: bold;
-        margin-top: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-top: 12px;
+        box-shadow: 0 3px 6px rgba(0,51,102,0.2);
         text-align: center;
+        transition: background 0.3s ease;
     }
     .map-btn:hover {
-        background-color: #004080;
+        background-color: #002244;
+    }
+    .metric-container {
+        background: #FFFFFF;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0;
+        text-align: center;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# 標題區
+# 頂部精裝標題區
 st.markdown("""
     <div class='main-header'>
         <div class='main-title'>🎯 AI 智能六合彩專屬導航系統</div>
-        <div class='sub-title'>結合香港馬會歷史大數據 · 個人生命密碼 · 動態吉時吉地</div>
+        <div class='sub-title'>結合香港馬會官方歷史大數據 · 個人生命密碼 · 動態吉時吉地精準對位</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -160,34 +173,34 @@ def get_dynamic_timing_and_location(life_path, current_date_str):
 historical_draws, total_draws_count, recent_draws_list = load_historical_data()
 today_str = datetime.now().strftime("%Y-%m-%d")
 
-# ==================== 3. 雙欄卡片佈局（左側防撞護盾說明，右側互動輸入） ====================
-col_left, col_right = st.columns([1, 1])
+# ==================== 3. 雙欄頂級排版（左側防撞說明，右側互動輸入） ====================
+col_left, col_right = st.columns([1, 1], gap="medium")
 
 with col_left:
     st.markdown(f"""
         <div class='info-card'>
-            <h4 style='margin-top:0; color:#002D62;'>⚙️ 系統防撞護盾說明</h4>
-            <p style='font-size:0.9rem; margin-bottom:8px;'><b>🌟 系統核心優勢：</b></p>
-            <p style='font-size:0.85rem; margin-bottom:6px;'>• <b>個人生命密碼</b>：轉化個人運勢權重。</p>
-            <p style='font-size:0.85rem; margin-bottom:6px;'>• <b>4,402 期防撞過濾</b>：已同步香港馬會最新歷史共 <b>{total_draws_count} 期</b> 紀錄，自動剔除歷史已開組合。</p>
-            <p style='font-size:0.85rem; margin-bottom:12px;'>• <b>動態吉時導航</b>：配備一鍵地圖導航至指定旺地。</p>
-            <hr style='margin: 10px 0; border-top: 1px solid #ccc;'>
-            <p style='font-size:0.8rem; color:#555; margin-bottom:0;'>💡 <b>提示</b>：本版本已針對手機瀏覽器全面優化，主要操作均已置於主畫面，確保流暢體驗！</p>
+            <h4 style='margin-top:0; color:#003366; font-size: 1.2rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 8px;'>⚙️ 系統防撞護盾說明</h4>
+            <p style='font-size:0.95rem; margin-bottom:10px; color:#1E293B;'><b>🌟 系統核心優勢：</b></p>
+            <p style='font-size:0.9rem; margin-bottom:8px; color:#334155;'>• <b>個人生命密碼</b>：精準轉化個人運勢權重。</p>
+            <p style='font-size:0.9rem; margin-bottom:8px; color:#334155;'>• <b>4,402 期防撞過濾</b>：已同步香港馬會最新歷史共 <b>{total_draws_count} 期</b> 紀錄，自動剔除歷史已開組合。</p>
+            <p style='font-size:0.9rem; margin-bottom:12px; color:#334155;'>• <b>動態吉時導航</b>：配備一鍵地圖導航至指定旺地。</p>
+            <hr style='margin: 12px 0; border-top: 1px solid #CBD5E1;'>
+            <p style='font-size:0.85rem; color:#64748B; margin-bottom:0;'>💡 <b>提示</b>：本版本已針對手機與電腦瀏覽器全面優化，主要操作均已置於主畫面，確保流暢體驗！</p>
         </div>
     """, unsafe_allow_html=True)
 
 with col_right:
     st.markdown("""
         <div class='action-card'>
-            <h4 style='margin-top:0; color:#002D62;'>✨ 立即啟動專屬測算</h4>
-            <p style='font-size:0.85rem; color:#555; margin-bottom:12px;'>請輸入您的出生日期以計算今期專屬組合：</p>
+            <h4 style='margin-top:0; color:#C62828; font-size: 1.2rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 8px;'>✨ 立即啟動專屬測算</h4>
+            <p style='font-size:0.9rem; color:#334155; margin-bottom:15px;'>請輸入您的出生日期以計算今期專屬組合：</p>
         </div>
     """, unsafe_allow_html=True)
-    # 在右側卡片下方緊接著輸入框與按鈕
+    # 簡潔流暢的輸入與按鈕
     birthday_input = st.text_input("🎂 出生日期 (YYYY-MM-DD)", "1977-10-02")
     generate_btn = st.button("🚀 啟動 AI 演算法，生成今期專屬號碼", type="primary", use_container_width=True)
 
-st.markdown("---")
+st.markdown("<br>", unsafe_allow_html=True)
 
 # ==================== 4. 主畫面計算與結果呈現邏輯 ====================
 if generate_btn:
@@ -203,13 +216,13 @@ if generate_btn:
     
     col_a, col_b, col_c = st.columns(3)
     with col_a:
-        st.metric(label="1️⃣ 個人生命密碼", value=f"【 {life_path} 號常數 】")
+        st.markdown(f"<div class='metric-container'><span style='color:gray; font-size:0.85rem;'>1️⃣ 個人生命密碼</span><br><b style='color:#003366; font-size:1.1rem;'>【 {life_path} 號常數 】</b></div>", unsafe_allow_html=True)
     with col_b:
-        st.metric(label="2️⃣ 大數據防撞狀態", value=f"已過濾 {total_draws_count} 期")
+        st.markdown(f"<div class='metric-container'><span style='color:gray; font-size:0.85rem;'>2️⃣ 大數據防撞狀態</span><br><b style='color:#003366; font-size:1.1rem;'>已過濾 {total_draws_count} 期</b></div>", unsafe_allow_html=True)
     with col_c:
-        st.metric(label="3️⃣ 今日動態更新", value=today_str)
+        st.markdown(f"<div class='metric-container'><span style='color:gray; font-size:0.85rem;'>3️⃣ 今日動態更新</span><br><b style='color:#003366; font-size:1.1rem;'>{today_str}</b></div>", unsafe_allow_html=True)
         
-    st.markdown("---")
+    st.markdown("<br>", unsafe_allow_html=True)
     
     # 產生存檔防撞號碼
     valid_combinations = []
@@ -229,12 +242,12 @@ if generate_btn:
 
     # 顯示號碼結果
     st.markdown("#### 🎯 為您今期獨家訂製的 3 組防撞專屬號碼")
-    st.markdown("<p style='color: gray; font-size: 0.85rem;'>⚠️ 註：本系統確保每期數據即時更新，絕不與歷史已開獎組合重複。</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #64748B; font-size: 0.9rem;'>⚠️ 註：本系統確保每期數據即時更新，絕不與歷史已開獎組合重複。</p>", unsafe_allow_html=True)
     
     for i, res in enumerate(valid_combinations, 1):
         st.markdown(f"**第 {i} 組精選組合：**")
         balls_html = "".join([f"<span class='number-ball'>{str(n).zfill(2)}</span>" for n in res])
-        st.markdown(f"<div style='margin-bottom: 12px;'>{balls_html}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='margin-bottom: 15px;'>{balls_html}</div>", unsafe_allow_html=True)
 
     # Google Maps 導航按鈕
     maps_query = urllib.parse.quote(f"香港 {best_station} {station_address}")
@@ -243,25 +256,7 @@ if generate_btn:
     # 呈現個人專屬動態吉時吉地與導航
     st.markdown(f"""
         <div class='nav-box'>
-            <h3 style='margin-top:0; color:#002D62; font-size: 1.3rem;'>🧭 今期個人專屬「動態吉時與最佳投注站」導航</h3>
-            <p style='margin-bottom: 8px;'><b>⏱ 今日專屬最佳吉時：</b> <span style='color:#CC0000; font-weight:bold;'>{best_time}</span></p>
-            <p style='margin-bottom: 8px;'><b>📍 推薦個人吉方位：</b> 朝【 <span style='color:#CC0000; font-weight:bold;'>{best_direction}</span> 】方向出行</p>
-            <p style='margin-bottom: 8px;'><b>🏢 推薦指定吉投注站：</b> <span style='font-weight:bold; color:#002D62;'>{best_station}</span> ({station_address})</p>
-            <a href="{maps_url}" target="_blank" class="map-btn">🗺️ 一鍵打開 Google Maps 導航至此投注站</a>
-            <hr style='margin: 15px 0 10px 0; border-top: 1px dashed #B8D4F0;'>
-            <p style='font-size:0.85rem; color:#555; margin-bottom:0;'>💡 <i>提示：手機點擊上方按鈕即可直接開啟地圖導航，心誠則靈。</i></p>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # 近期開獎戰績比對
-    with st.expander("🔍 點擊展開：近期馬會開獎結果速查與核對工具"):
-        st.write("您可以對照最近幾期的官方開獎號碼，隨時追蹤系統的表現：")
-        for draw in recent_draws_list:
-            nums_str = " ".join([str(n).zfill(2) for n in draw['numbers']])
-            st.markdown(f"• **期數 {draw['draw_id']}** ({draw['date']})： ` {nums_str} `")
-
-    st.markdown("---")
-    st.info("💡 **專業版升級提示**：系統已為您鎖定今期最優化組合。如需解鎖每期賽前 2 小時自動推播，請持續關注我們的官方 App 升級動態！")
-
-else:
-    st.info("👈 請在上方填寫您的出生日期，並點擊**「啟動 AI 演算法，生成今期專屬號碼」**按鈕，即可開始測算今期專屬號碼！")
+            <h3 style='margin-top:0; color:#003366; font-size: 1.3rem; margin-bottom: 12px;'>🧭 今期個人專屬「動態吉時與最佳投注站」導航</h3>
+            <p style='margin-bottom: 8px;'><b>⏱ 今日專屬最佳吉時：</b> <span style='color:#C62828; font-weight:bold;'>{best_time}</span></p>
+            <p style='margin-bottom: 8px;'><b>📍 推薦個人吉方位：</b> 朝【 <span style='color:#C62828; font-weight:bold;'>{best_direction}</span> 】方向出行</p>
+            <p style='margin-bottom: 12px;'><b>🏢 推薦指定吉投注站：
