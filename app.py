@@ -13,7 +13,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# 注入專業級 CSS 樣式 (針對手機端完美優化)
+# 注入專業級 CSS 樣式
 st.markdown("""
     <style>
     .main-header {
@@ -36,13 +36,21 @@ st.markdown("""
         color: #FFD700;
         font-weight: 400;
     }
-    .input-card {
+    .info-card {
+        background-color: #F8F9FA;
+        border-left: 5px solid #002D62;
+        padding: 18px;
+        border-radius: 8px;
+        height: 100%;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .action-card {
         background-color: #F0F4F8;
         border: 2px solid #002D62;
-        padding: 20px;
-        border-radius: 12px;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        padding: 18px;
+        border-radius: 8px;
+        height: 100%;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
     .number-ball {
         display: inline-block;
@@ -152,31 +160,36 @@ def get_dynamic_timing_and_location(life_path, current_date_str):
 historical_draws, total_draws_count, recent_draws_list = load_historical_data()
 today_str = datetime.now().strftime("%Y-%m-%d")
 
-# ==================== 3. 主畫面核心：手機優先的直覺輸入區塊 ====================
-st.markdown("""
-    <div class='input-card'>
-        <h3 style='margin-top:0; color:#002D62;'>✨ 請輸入您的出生日期以啟動專屬演算法</h3>
-        <p style='font-size:0.9rem; color:#555; margin-bottom:10px;'>系統將結合您的個人密碼與 4,402 期馬會歷史數據，為您計算今期專屬防撞號碼。</p>
-    </div>
-""", unsafe_allow_html=True)
+# ==================== 3. 雙欄卡片佈局（左側防撞護盾說明，右側互動輸入） ====================
+col_left, col_right = st.columns([1, 1])
 
-# 讓輸入框直接在主畫面正中央，手機用戶一眼就能看到，完全不用找側邊欄！
-birthday_input = st.text_input("🎂 出生日期 (格式: YYYY-MM-DD)", "1977-10-02")
-generate_btn = st.button("🚀 啟動 AI 演算法，生成今期專屬號碼", type="primary", use_container_width=True)
+with col_left:
+    st.markdown(f"""
+        <div class='info-card'>
+            <h4 style='margin-top:0; color:#002D62;'>⚙️ 系統防撞護盾說明</h4>
+            <p style='font-size:0.9rem; margin-bottom:8px;'><b>🌟 系統核心優勢：</b></p>
+            <p style='font-size:0.85rem; margin-bottom:6px;'>• <b>個人生命密碼</b>：轉化個人運勢權重。</p>
+            <p style='font-size:0.85rem; margin-bottom:6px;'>• <b>4,402 期防撞過濾</b>：已同步香港馬會最新歷史共 <b>{total_draws_count} 期</b> 紀錄，自動剔除歷史已開組合。</p>
+            <p style='font-size:0.85rem; margin-bottom:12px;'>• <b>動態吉時導航</b>：配備一鍵地圖導航至指定旺地。</p>
+            <hr style='margin: 10px 0; border-top: 1px solid #ccc;'>
+            <p style='font-size:0.8rem; color:#555; margin-bottom:0;'>💡 <b>提示</b>：本版本已針對手機瀏覽器全面優化，主要操作均已置於主畫面，確保流暢體驗！</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col_right:
+    st.markdown("""
+        <div class='action-card'>
+            <h4 style='margin-top:0; color:#002D62;'>✨ 立即啟動專屬測算</h4>
+            <p style='font-size:0.85rem; color:#555; margin-bottom:12px;'>請輸入您的出生日期以計算今期專屬組合：</p>
+        </div>
+    """, unsafe_allow_html=True)
+    # 在右側卡片下方緊接著輸入框與按鈕
+    birthday_input = st.text_input("🎂 出生日期 (YYYY-MM-DD)", "1977-10-02")
+    generate_btn = st.button("🚀 啟動 AI 演算法，生成今期專屬號碼", type="primary", use_container_width=True)
 
 st.markdown("---")
 
-# ==================== 4. 側邊欄：保留額外系統狀態與說明 ====================
-st.sidebar.header("⚙️ 系統防撞護盾說明")
-st.sidebar.markdown(f"""
-### 🌟 系統核心優勢
-1. **個人生命密碼**：轉化個人運勢權重。
-2. **4,402 期防撞過濾**：已同步香港馬會最新歷史共 **{total_draws_count} 期** 紀錄，自動剔除歷史已開組合。
-3. **動態吉時導航**：配備一鍵地圖導航至指定旺地。
-""")
-st.sidebar.info("💡 提示：本版本已針對手機瀏覽器全面優化，主要操作均已置於主畫面，確保流暢體驗！")
-
-# ==================== 5. 主畫面計算與結果呈現邏輯 ====================
+# ==================== 4. 主畫面計算與結果呈現邏輯 ====================
 if generate_btn:
     
     with st.spinner("🔄 AI 核心正正在同步香港馬會最新開獎數據庫，剔除歷史重複組合，並運算您的動態吉時與方位..."):
@@ -192,7 +205,7 @@ if generate_btn:
     with col_a:
         st.metric(label="1️⃣ 個人生命密碼", value=f"【 {life_path} 號常數 】")
     with col_b:
-        st.metric(label="2️⃣ 大數據防撞狀態", value="已過濾 4,402 期")
+        st.metric(label="2️⃣ 大數據防撞狀態", value=f"已過濾 {total_draws_count} 期")
     with col_c:
         st.metric(label="3️⃣ 今日動態更新", value=today_str)
         
@@ -251,4 +264,4 @@ if generate_btn:
     st.info("💡 **專業版升級提示**：系統已為您鎖定今期最優化組合。如需解鎖每期賽前 2 小時自動推播，請持續關注我們的官方 App 升級動態！")
 
 else:
-    st.info("👇 請在上方輸入您的出生日期，並點擊**「啟動 AI 演算法，生成今期專屬號碼」**按鈕，即可開始測算！")
+    st.info("👈 請在上方填寫您的出生日期，並點擊**「啟動 AI 演算法，生成今期專屬號碼」**按鈕，即可開始測算今期專屬號碼！")
