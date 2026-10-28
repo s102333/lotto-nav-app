@@ -340,27 +340,4 @@ if generate_btn:
     # 呈現個人專屬動態吉時吉地與導航
     st.markdown(f"""
         <div class='nav-box'>
-            <h3 style='margin-top:0; color:#003366; font-size: 1.3rem; margin-bottom: 18px;'>🧭 今期個人專屬「動態吉時與最佳投注站」導航</h3>
-            <p style='margin-bottom: 12px;'><b>⏱ 今日專屬最佳吉時：</b> <span style='color:#C62828; font-weight:bold;'>{best_time}</span></p>
-            <p style='margin-bottom: 12px;'><b>📍 推薦個人吉方位：</b> 朝【 <span style='color:#C62828; font-weight:bold;'>{best_direction}</span> 】方向出行</p>
-            <p style='margin-bottom: 18px;'><b>🏢 推薦指定吉投注站：</b> <span style='font-weight:bold; color:#003366;'>{best_station}</span> ({station_address})</p>
-            <a href="{maps_url}" target="_blank" class="map-btn">🗺️ 一鍵打開 Google Maps 導航至此投注站</a>
-            <hr style='margin: 22px 0 16px 0; border-top: 1px dashed #CBD5E1;'>
-            <p style='font-size:0.85rem; color:#475569; margin-bottom:0;'>💡 <i>提示：點擊上方按鈕即可直接開啟地圖導航，心誠則靈，祝您旗開得勝！</i></p>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # 近期開獎戰績比對
-    st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
-    with st.expander("🔍 點擊展開：近期馬會開獎結果速查與核對工具"):
-        st.write("您可以對照最近幾期的官方開獎號碼，隨時追蹤系統的表現：")
-        for draw in recent_draws_list:
-            nums_str = " ".join([str(n).zfill(2) for n in draw['numbers']])
-            st.markdown(f"• **期數 {draw['draw_id']}** ({draw['date']})： ` {nums_str} `")
-
-    st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
-    st.info("💡 **旗艦版升級提示**：系統已為您解鎖全套高黏著度工具。如需開通每月 VIP 訂閱自動同步功能，請隨時聯繫系統管理員！")
-
-else:
-    st.markdown("<div style='margin-top: 35px;'></div>", unsafe_allow_html=True)
-    st.info("👈 請在上方填寫您的出生日期，選擇您喜愛的投注模式，並點擊**「啟動 AI 演算法，生成今期專屬號碼」**按鈕，解鎖全套旗艦功能！")
+            <h3 style='margin-top:0; color:#003366; font-size: 1.3rem; margin-bottom: 18px;'>🧭 今期個人專屬「動態吉時與最佳投注站
