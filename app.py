@@ -62,6 +62,7 @@ st.markdown("""
         border: 2px solid #F59E0B;
         padding: 24px;
         border-radius: 12px;
+        margin-top: 30px;
         margin-bottom: 30px;
         box-shadow: 0 4px 14px rgba(245,158,11,0.2);
     }
@@ -134,7 +135,7 @@ st.markdown("""
 st.markdown("""
     <div class='main-header'>
         <div class='main-title'>🎯 AI 智能六合彩專屬導航系統</div>
-        <div class='sub-title'>結合香港馬會官方歷史大數據 · 個人生命密碼 · 機器學習熱力圖 · 智慧合買管理</div>
+        <div class='sub-title'>結合香港馬會官方歷史大數據 · 個人生命密碼 · 動態吉時吉地精準對位</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -193,27 +194,7 @@ def get_dynamic_timing_and_location(life_path, current_date_str):
 historical_draws, total_draws_count, recent_draws_list = load_historical_data()
 today_str = datetime.now().strftime("%Y-%m-%d")
 
-# ==================== 3. 主畫面頂級 VIP 尊貴會員招募專區（解決手機看不到側邊欄痛點） ====================
-st.markdown("""
-    <div class='vip-banner'>
-        <h3 style='margin-top:0; color:#92400E; font-size: 1.4rem; margin-bottom: 12px;'>👑 【VIP 尊貴會員升級專區】解鎖全套贏面倍增工具</h3>
-        <p style='font-size:0.95rem; color:#78350F; margin-bottom:8px;'>🔥 <b>VIP 冷熱號碼熱力圖</b>：<b>告別盲目亂買！</b>精準鎖定近期高頻開出與潛水回補的黃金號碼，把勝率從碰運氣提升到大數據科學運算。</p>
-        <p style='font-size:0.95rem; color:#78350F; margin-bottom:8px;'>📅 <b>個人開彩運勢日曆</b>：<b>拒絕浪費冤枉錢！</b>自動標註您全年磁場最強的「強力出擊日」，把金錢精準投資在財運最高昂的黃金期。</p>
-        <p style='font-size:0.95rem; color:#78350F; margin-bottom:12px;'>🤝 <b>智慧夾錢分帳管理</b>：<b>和氣生財不傷感情！</b>一鍵輸入總金額與出資額，自動生成透明分紅比例與確認卡，同事朋友夾錢買複式從此不再計錯數。</p>
-        <hr style='margin: 12px 0; border-top: 1px solid #F59E0B;'>
-        <p style='font-size:0.9rem; color:#B45309; font-weight:bold; margin-bottom:0;'>💡 每月只需 $48 HKD（不到兩張電腦飛的錢），立即點擊下方按鈕解鎖全年權益：</p>
-        <a href="https://buy.stripe.com/your_stripe_payment_link" target="_blank" class="pay-btn">💳 立即線上信用卡升級 VIP（$48/月）</a>
-    </div>
-""", unsafe_allow_html=True)
-
-with st.expander("🇭🇰 港幣轉數快 (FPS) / PayMe 直接過數升級指引"):
-    st.write("如欲使用轉數快或 PayMe 支付 $48 月費，請轉至以下帳號：")
-    st.code("FPS ID: 123456789 (Joyful Tech)", language="text")
-    st.write("過數後請將截圖 WhatsApp 至 91234567，客服將在 10 分鐘內為您手動解鎖 VIP 帳號！")
-
-st.markdown("<div class='section-spacing'></div>", unsafe_allow_html=True)
-
-# ==================== 4. 雙欄頂級排版（輸入與護盾說明） ====================
+# ==================== 3. 主畫面頂部：保持完全免費、直覺的輸入與護盾說明 ====================
 col_left, col_right = st.columns([1, 1], gap="large")
 
 with col_left:
@@ -225,14 +206,14 @@ with col_left:
             <p style='font-size:0.88rem; margin-bottom:6px; color:#334155;'>• <b>個人生命密碼</b>：精準對位您的專屬運勢常數。</p>
             <p style='font-size:0.88rem; margin-bottom:12px; color:#334155;'>• <b>動態吉時導航</b>：一鍵開啟 Google Maps 直達旺地。</p>
             <hr style='margin: 12px 0; border-top: 1px solid #CBD5E1;'>
-            <p style='font-size:0.85rem; color:#64748B; margin-bottom:0;'>💡 <b>提示</b> : 本系統已針對手機端完美適配，所有操作直觀流暢！</p>
+            <p style='font-size:0.85rem; color:#64748B; margin-bottom:0;'>💡 <b>提示</b> : 本系統免費為您提供今期防撞號碼與吉時測算！</p>
         </div>
     """, unsafe_allow_html=True)
 
 with col_right:
     st.markdown("""
         <div class='action-card'>
-            <h4 style='margin-top:0; color:#C62828; font-size: 1.2rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 10px; margin-bottom: 12px;'>✨ 立即啟動專屬測算</h4>
+            <h4 style='margin-top:0; color:#C62828; font-size: 1.2rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 10px; margin-bottom: 12px;'>✨ 立即免費啟動測算</h4>
             <p style='font-size:0.9rem; color:#334155; margin-bottom:10px;'>請輸入您的出生日期以計算今期專屬組合：</p>
         </div>
     """, unsafe_allow_html=True)
@@ -247,15 +228,15 @@ with col_right:
     )
     
     st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
-    generate_btn = st.button("🚀 啟動 AI 演算法，生成今期專屬號碼", type="primary", use_container_width=True)
+    generate_btn = st.button("🚀 啟動 AI 演算法，免費生成今期號碼", type="primary", use_container_width=True)
 
-# ==================== 5. 主畫面計算與結果呈現邏輯 ====================
+# ==================== 4. 主畫面計算與結果呈現邏輯 ====================
 if generate_btn:
     
     with st.spinner("🔄 AI 核心正正在同步香港馬會最新開獎數據庫，計算專屬吉時與方位..."):
         time.sleep(1.0)
     
-    life_path = calculate_life_path(birthdate_input)
+    life_path = calculate_life_path(birthday_input)
     best_time, best_direction, best_station, station_address = get_dynamic_timing_and_location(life_path, today_str)
     
     draw_count = 6
@@ -294,22 +275,12 @@ if generate_btn:
             valid_combinations.append(combo)
 
     st.markdown(f"#### 🎯 為您今期獨家訂製的 3 組{bet_mode}專屬號碼")
-    st.markdown("<p style='color: #64748B; font-size: 0.9rem; margin-bottom: 25px;'>⚠️ 註：本系統確保每期數據即時更新，絕不與歷史已開獎組合重複。</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #64748B; font-size: 0.9rem; margin-bottom: 25px;'>⚠️ 註: 本系統免費確保每期數據即時更新，絕不與歷史已開獎組合重複。</p>", unsafe_allow_html=True)
     
     for i, res in enumerate(valid_combinations, 1):
         st.markdown(f"**第 {i} 組精選組合：**")
         balls_html = "".join([f"<span class='number-ball'>{str(n).zfill(2)}</span>" for n in res])
         st.markdown(f"<div style='margin-bottom: 20px;'>{balls_html}</div>", unsafe_allow_html=True)
-
-    with st.expander("🔮 點擊展開：AI 財神靈籤占卜（今日財運批語）"):
-        oracles = [
-            ("【上上籤 - 財神到門】", "今日磁場大旺，正財偏財皆有所獲。宜大膽朝吉方位行事，心誠則靈！"),
-            ("【中平籤 - 穩步向前】", "氣場平穩，切忌貪勝。建議採取小額複式或與朋友夾錢，穩紮穩打為上策。"),
-            ("【吉 - 順勢而為】", "貴人相助於正南方。今日靈感最強，相信直覺選出的第一組號碼！")
-        ]
-        oracle_choice = oracles[(life_path + int(today_str.replace("-", ""))) % len(oracles)]
-        st.markdown(f"### {oracle_choice[0]}")
-        st.info(oracle_choice[1])
 
     # Google Maps 導航按鈕
     maps_query = urllib.parse.quote(f"香港 {best_station} {station_address}")
@@ -325,6 +296,34 @@ if generate_btn:
         </div>
     """, unsafe_allow_html=True)
 
+    # ==================== 5. 精彩結果下方自然承接：VIP 尊貴會員升級專區（價值感知後的黃金收費點） ====================
+    st.markdown(f"""
+        <div class='vip-banner'>
+            <h3 style='margin-top:0; color:#92400E; font-size: 1.3rem; margin-bottom: 12px;'>👑 【解鎖進階贏面倍增工具】升級 VIP 尊貴會員</h3>
+            <p style='font-size:0.9rem; color:#78350F; margin-bottom:6px;'>🔥 <b>VIP 冷熱號碼熱力圖</b>：<b>告別盲目亂買！</b>精準鎖定近期高頻開出與潛水回補的黃金號碼。</p>
+            <p style='font-size:0.9rem; color:#78350F; margin-bottom:6px;'>📅 <b>個人開彩運勢日曆</b>：<b>拒絕浪費冤枉錢！</b>自動標註您全年磁場最強的「強力出擊日」。</p>
+            <p style='font-size:0.9rem; color:#78350F; margin-bottom:10px;'>🤝 <b>智慧夾錢分帳管理</b>：<b>和氣生財不傷感情！</b>一鍵自動生成透明分紅比例與確認卡。</p>
+            <hr style='margin: 10px 0; border-top: 1px solid #F59E0B;'>
+            <p style='font-size:0.85rem; color:#B45309; font-weight:bold; margin-bottom:0;'>💡 每月只需 $48 HKD，立即解鎖全套進階功能：</p>
+            <a href="https://buy.stripe.com/your_stripe_payment_link" target="_blank" class="pay-btn">💳 立即線上信用卡升級 VIP（$48/月）</a>
+        </div>
+    """, unsafe_allow_html=True)
+
+    with st.expander("🇭🇰 港幣轉數快 (FPS) / PayMe 直接過數升級指引"):
+        st.write("如欲使用轉數快或 PayMe 支付 $48 月費，請轉至以下帳號：")
+        st.code("FPS ID: 123456789 (Joyful Tech)", language="text")
+        st.write("過數後請將截圖 WhatsApp 至 91234567，客服將在 10 分鐘內為您手動解鎖 VIP 帳號！")
+
+    with st.expander("🔮 點擊展開：AI 財神靈籤占卜（今日財運批語）"):
+        oracles = [
+            ("【上上籤 - 財神到門】", "今日磁場大旺，正財偏財皆有所獲。宜大膽朝吉方位行事，心誠則靈！"),
+            ("【中平籤 - 穩步向前】", "氣場平穩，切忌貪勝。建議採取小額複式或與朋友夾錢，穩紮穩打為上策。"),
+            ("【吉 - 順勢而為】", "貴人相助於正南方。今日靈感最強，相信直覺選出的第一組號碼！")
+        ]
+        oracle_choice = oracles[(life_path + int(today_str.replace("-", ""))) % len(oracles)]
+        st.markdown(f"### {oracle_choice[0]}")
+        st.info(oracle_choice[1])
+
     st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
     with st.expander("🔍 點擊展開：近期馬會開獎結果速查與核對工具"):
         for draw in recent_draws_list:
@@ -333,4 +332,4 @@ if generate_btn:
 
 else:
     st.markdown("<div style='margin-top: 35px;'></div>", unsafe_allow_html=True)
-    st.info("👈 請在上方填寫您的出生日期，選擇投注模式，並點擊**「啟動 AI 演算法，生成今期專屬號碼」**按鈕！")
+    st.info("👈 請在上方填寫您的出生日期，選擇投注模式，並點擊**「啟動 AI 演算法，免費生成今期號碼」**按鈕，即可免費體驗！")
