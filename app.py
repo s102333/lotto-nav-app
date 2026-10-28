@@ -9,6 +9,16 @@ st.set_page_config(
     layout="centered"
 )
 
+# 🔻 隱藏右上角 GitHub、Fork、選單以及右下角 Logo 的完整 CSS
+st.markdown("""
+    <style>
+    #MainMenu {visibility: hidden;}          /* 隱藏右上角選單 */
+    footer {visibility: hidden;}              /* 隱藏底部 Powered by Streamlit */
+    .stDeployButton {display: none;}          /* 隱藏右下角 Manage app 按鈕 */
+    header {visibility: hidden;}              /* 隱藏頂端預設 Header（包含 GitHub / Fork 圖示） */
+    </style>
+""", unsafe_allow_html=True)
+
 # 自訂優化 CSS 樣式
 st.markdown("""
     <style>
@@ -109,7 +119,6 @@ with tab1:
     col_a, col_b, col_c = st.columns([1, 2, 1])
     with col_b:
         if st.button("🎲 根據生日密碼生成免費號碼", use_container_width=True):
-            # 用生日作為隨機亂數種子，確保每個人因生日不同而有專屬結果
             random.seed(str(free_birthday))
             free_numbers = sorted(random.sample(range(1, 50), 6))
             st.success(f"🎯 依據您的生日（{free_birthday}）推算出的專屬號碼：**{free_numbers}**")
@@ -134,7 +143,6 @@ with tab2:
     if st.session_state.is_vip:
         st.success("🎉 歡迎回來，尊貴的 VIP 會員！")
         
-        # 👑 VIP 會員全域生日設定
         st.markdown("""
             <div class="section-card" style="background: #fdf6e2; border-color: #d69e2e;">
                 <h3 style="color: #b7791f;">🔑 【核心設定】請輸入您的真實出生日期</h3>
@@ -204,7 +212,7 @@ with tab2:
         st.markdown("---")
 
         # -------------------------------------------------------------
-        # 功能 3：個人幸運方位導航（時間、屋企位、投注站）
+        # 功能 3：個人幸運方位導航
         # -------------------------------------------------------------
         st.markdown("""
             <div class="section-card">
@@ -235,70 +243,4 @@ with tab2:
         """, unsafe_allow_html=True)
         
         with st.form("group_buy_form"):
-            st.write("📝 **建立新一期合買名單**")
-            group_name = st.text_input("合買群組名稱（例如：朋友夾份買六合彩）", "屯門老友記夾份團")
-            total_shares = st.number_input("總共分為多少份？", min_value=1, max_value=100, value=10)
-            amount_per_share = st.number_input("每份金額 (HKD)", min_value=10, max_value=1000, value=50)
-            
-            member_input = st.text_area("輸入成員與認購份數（格式：名字, 份數，每行一位）", "張三, 2\n李四, 3\n王五, 1")
-            
-            submitted = st.form_submit_button("📊 計算合買總金額與分帳清單")
-            if submitted:
-                lines = member_input.strip().split("\n")
-                total_allocated = 0
-                st.markdown(f"### 📋 【{group_name}】合買分配清單")
-                for line in lines:
-                    if "," in line:
-                        name, shares = line.split(",")
-                        shares_num = int(shares.strip())
-                        total_allocated += shares_num
-                        cost = shares_num * amount_per_share
-                        st.write(f"• **{name.strip()}**：認購 {shares_num} 份（應付金額：**HK${cost}**）")
-                
-                st.info(f"💰 **總計**：已分出 {total_allocated} 份 / 總共 {total_shares} 份。")
-                if total_allocated <= total_shares:
-                    st.success("✅ 份數分配正常，隨時準備出擊！")
-                else:
-                    st.warning("⚠️ 注意：認購份數已超出總設定份數，請重新確認！")
-
-    else:
-        # 🔴 未付費時顯示的購買引導畫面
-        st.markdown("""
-            <div class="vip-card">
-                <h1 style="margin-bottom: 10px;">💎 解鎖 AI 智能六合彩 VIP</h1>
-                <p style="font-size: 16px; margin-bottom: 15px;">拒絕盲買、避開盲門！解鎖完整生命密碼、大數據預測、幸運方位與智慧合買工具！</p>
-                <h2 style="color: #d93838; margin-top: 0;">💰 僅需 HK$48 / 月</h2>
-            </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-            <div style="text-align: center; margin: 30px 0;">
-                <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn">
-                    💳 立即線上信用卡升級 VIP（$48/月）
-                </a>
-                <p style="color: #777777; font-size: 13px; margin-top: 10px;">🔒 由 Stripe 官方安全加密提供支援，隨時可取消訂閱</p>
-            </div>
-        """, unsafe_allow_html=True)
-
-# --- Tab 3：會員帳戶管理 ---
-with tab3:
-    st.markdown("""
-        <div class="section-card">
-            <h3>⚙️ 帳戶與訂閱管理</h3>
-            <p>如果您已經是我們的 VIP 會員，您可以隨時前往管理中心查看訂單、更新信用卡或取消訂閱：</p>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    col_x, col_y, col_z = st.columns([1, 2, 1])
-    with col_y:
-        st.markdown("""
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="https://dashboard.stripe.com/" target="_blank" style="background-color: #f0f2f6; color: #333333; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; border: 1px solid #d0d7de; display: inline-block;">
-                    🔗 前往 Stripe 帳戶與訂閱管理中心
-                </a>
-            </div>
-        """, unsafe_allow_html=True)
-
-# 頁尾資訊
-st.markdown("---")
-st.markdown("<p style='text-align: center; color: gray; font-size: 12px;'>© 2026 AI Lotto Nav. All rights reserved. 僅供娛樂與數據參考，請理性投注。</p>", unsafe_allow_html=True)
+            st
