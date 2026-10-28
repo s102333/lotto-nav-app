@@ -65,7 +65,7 @@ st.markdown("""
 st.markdown('<div class="main-title">🔮 AI 智能六合彩資料導航</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">運用大數據與個人化運勢分析，助您精準掌握幸運號碼</div>', unsafe_allow_html=True)
 
-# 建立橫向分頁標籤（解決 NameError 的關鍵）
+# 建立橫向分頁標籤
 tab1, tab2, tab3 = st.tabs(["🏠 今日免費號碼", "💎 VIP 尊貴會員升級", "⚙️ 會員帳戶管理"])
 
 # --- Tab 1：首頁／免費試用 ---
@@ -120,7 +120,7 @@ with tab2:
         st.info("💡 **例子**：為你推算當期最有利的下注時段與方位參考，增加信心。")
         
     with col_b:
-        st.markdown("### 3. 智慧合買管理工具")
+        st.markdown("### 🤝 3. 智慧合買管理工具")
         st.write("輕鬆與好友建立合買清單，自動追蹤認購與分帳。")
         st.info("💡 **例子**：一鍵建立合買群組，自動記錄成員注數與金額，免去手動記帳。")
         
