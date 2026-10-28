@@ -81,12 +81,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 🔒 【正式上線邏輯】：只允許透過 Stripe 付款成功後帶回的 ?vip=true 自動解鎖
+# 🔒 正式上線邏輯：透過 Stripe 付款成功帶回的 ?vip=true 自動解鎖
 query_params = st.query_params
 if "vip" in query_params and query_params["vip"] == "true":
     st.session_state.is_vip = True
 else:
-    # 確保未帶參數時不會意外解鎖
     st.session_state.is_vip = False
 
 # 頁面標題
@@ -255,7 +254,7 @@ with tab2:
                     st.warning("⚠️ 注意：認購份數已超出總設定份數，請重新確認！")
 
     else:
-        # 🔴 未付費時顯示的購買引導畫面（絕對安全，未付費絕對進不去 VIP）
+        # 🔴 未付費時顯示的購買引導畫面
         st.markdown("""
             <div class="vip-card">
                 <h1 style="margin-bottom: 10px;">💎 解鎖 AI 智能六合彩 VIP</h1>
@@ -294,4 +293,4 @@ with tab3:
 
 # 頁尾資訊
 st.markdown("---")
-st.markdown("<p style='text
+st.markdown("<p style='text-align: center; color: gray; font-size: 12px;'>© 2026 AI Lotto Nav. All rights reserved. 僅供娛樂與數據參考，請理性投注。</p>", unsafe_allow_html=True)
