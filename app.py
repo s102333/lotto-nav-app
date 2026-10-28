@@ -130,7 +130,7 @@ with tab1:
         <div class="promo-banner">
             <h3 style="color: #2b6cb0; margin-top: 0;">🎁 【今日限時加碼：一石二鳥神級體驗】</h3>
             <p style="font-size: 15px; color: #2d3748; margin-bottom: 8px;">
-                <strong>🔥 男又好、女又好，每日起身頭痛唔知明天著咩衫？</strong><br>
+                <strong>🔥 男又好、女又好，每日頭痛唔知明天著咩衫？</strong><br>
                 訂閱 VIP 後，系統每日自動幫你決定好<strong>「明天專屬個人幸運顏色與催運穿搭指引」</strong>！
             </p>
             <p style="font-size: 13px; color: #e53e3e; margin-bottom: 0;">
