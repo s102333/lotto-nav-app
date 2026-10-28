@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-from datetime import datetime
 
 # 頁面基本設定
 st.set_page_config(
@@ -9,45 +8,55 @@ st.set_page_config(
     layout="centered"
 )
 
-# 自訂 CSS 樣式
+# 自訂優化 CSS 樣式（置中、排版簡潔、按鈕醒目）
 st.markdown("""
     <style>
     .main-title {
         text-align: center;
         color: #FF4B4B;
-        font-size: 32px;
+        font-size: 34px;
         font-weight: bold;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     .sub-title {
         text-align: center;
-        color: #555555;
+        color: #666666;
         font-size: 16px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
+    }
+    .section-card {
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
     }
     .vip-card {
         background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-        padding: 25px;
+        padding: 30px;
         border-radius: 12px;
         text-align: center;
-        color: #333333;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        color: #222222;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         margin-bottom: 25px;
     }
     .pay-btn {
         background-color: #635bff;
         color: white !important;
-        padding: 12px 28px;
+        padding: 14px 32px;
         text-decoration: none;
-        border-radius: 6px;
+        border-radius: 8px;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 18px;
         display: inline-block;
         margin-top: 15px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 10px rgba(99,91,255,0.3);
+        transition: all 0.3s ease;
     }
     .pay-btn:hover {
         background-color: #5147df;
+        transform: translateY(-2px);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -56,59 +65,74 @@ st.markdown("""
 st.markdown('<div class="main-title">🔮 AI 智能六合彩資料導航</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">運用大數據與個人化運勢分析，助您精準掌握幸運號碼</div>', unsafe_allow_html=True)
 
-# 側邊欄導航
-st.sidebar.title("📌 功能選單")
-menu = st.sidebar.radio("選擇功能", ["🏠 首頁／免費試用", "💎 VIP 尊貴會員專區", "⚙️ 會員帳戶管理"])
+# 頂部或顯眼處的分頁切換（改用橫向 Tabs，不再依賴左側選單，客戶一眼就能看到）
+tab1, tab2, tab3 = st.tabs(["🏠 今日免費號碼", "💎 VIP 尊貴會員升級", "⚙️ 會員帳戶管理"])
 
-# --- 1. 首頁／免費試用 ---
-if menu == "🏠 首頁／免費試用":
-    st.subheader("🍀 今日免費幸運號碼推薦")
-    st.write("點擊下方按鈕，即可隨機生成一套今日的參考號碼：")
-    
-    if st.button("🎲 生成免費推薦號碼"):
-        free_numbers = sorted(random.sample(range(1, 50), 6))
-        st.success(f"您的今日免費參考號碼：**{free_numbers}**")
-    
-    st.info("💡 想要解鎖更進階的 AI 趨勢分析、熱門號碼過濾與獨家運勢導航？歡迎隨時前往左側選單升級為 VIP 會員！")
-
-# --- 2. VIP 尊貴會員專區 ---
-elif menu == "💎 VIP 尊貴會員專區":
+# --- Tab 1：首頁／免費試用 ---
+with tab1:
     st.markdown("""
-        <div class="vip-card">
-            <h2>💎 AI 智能六合彩 VIP 尊貴會員</h2>
-            <p>解鎖完整大數據走勢預測、專屬運勢導航、獨家縮水組合及高命中率分析工具！</p>
-            <h3>💰 僅需 HK$48 / 月</h3>
+        <div class="section-card">
+            <h3>🍀 今日免費幸運號碼推薦</h3>
+            <p>點擊下方按鈕，即可立即生成一套今日參考號碼：</p>
         </div>
     """, unsafe_allow_html=True)
     
-    # 放置 Stripe 官方安全結帳連結按鈕
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🎲 生成免費推薦號碼", use_container_width=True):
+            free_numbers = sorted(random.sample(range(1, 50), 6))
+            st.success(f"🎯 您的今日免費參考號碼：**{free_numbers}**")
+    
+    st.info("💡 **提示**：想要解鎖更進階的 AI 趨勢分析、獨家縮水組合及高命中率分析工具？請點擊上方 **「💎 VIP 尊貴會員升級」** 標籤查看！")
+
+# --- Tab 2：VIP 尊貴會員專區（核心付費區） ---
+with tab2:
     st.markdown("""
-        <div style="text-align: center;">
+        <div class="vip-card">
+            <h1 style="margin-bottom: 10px;">💎 解鎖 AI 智能六合彩 VIP</h1>
+            <p style="font-size: 16px; margin-bottom: 15px;">全方位大數據走勢預測、專屬運勢導航、獨家過濾與智慧合買工具！</p>
+            <h2 style="color: #d93838; margin-top: 0;">💰 僅需 HK$48 / 月</h2>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    # 置中且非常醒目的 Stripe 付費按鈕
+    st.markdown("""
+        <div style="text-align: center; margin: 30px 0;">
             <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn">
                 💳 立即線上信用卡升級 VIP（$48/月）
             </a>
+            <p style="color: #777777; font-size: 13px; margin-top: 10px;">🔒 由 Stripe 官方安全加密提供支援，隨時可取消訂閱</p>
         </div>
     """, unsafe_allow_html=True)
     
     st.markdown("---")
-    st.subheader("🔥 VIP 尊貴會員獨享功能預覽")
-    st.write("1. **AI 深度趨勢回測**：分析過往過千期開彩數據。")
-    st.write("2. **個人幸運方位與時間導航**：結合五行與數字機率。")
-    st.write("3. **智慧合買管理工具**：輕鬆與好友建立合買清單與自動分帳。")
+    st.subheader("🔥 VIP 獨享強大功能")
+    col_a, col_b = st.columns(2)
+    with col_a:
+        st.write("✅ **AI 深度趨勢回測**：分析過往千期開彩數據。")
+        st.write("✅ **個人幸運方位導航**：結合五行與數字機率。")
+    with col_b:
+        st.write("✅ **智慧合買管理**：輕鬆建立合買清單與自動分帳。")
+        st.write("✅ **獨家縮水過濾工具**：大幅提高命中性。")
 
-# --- 3. 會員帳戶管理 ---
-elif menu == "⚙️ 會員帳戶管理":
-    st.subheader("⚙️ 帳戶與訂閱管理")
-    st.write("如果您已經訂閱成為 VIP，您可以透過下方連結隨時管理您的訂閱、更新信用卡資料或隨時取消訂閱：")
-    
-    # 這裡可以放置 Stripe 官方的客戶入口網址 (Customer Portal)
+# --- Tab 3：會員帳戶管理 ---
+with tab3:
     st.markdown("""
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="https://dashboard.stripe.com/" target="_blank" style="color: #635bff; font-weight: bold; text-decoration: underline;">
-                🔗 前往 Stripe 帳戶與訂閱管理中心
-            </a>
+        <div class="section-card">
+            <h3>⚙️ 帳戶與訂閱管理</h3>
+            <p>如果您已經是我們的 VIP 會員，您可以隨時前往管理中心查看訂單、更新信用卡或取消訂閱：</p>
         </div>
     """, unsafe_allow_html=True)
+    
+    col_x, col_y, col_z = st.columns([1, 2, 1])
+    with col_y:
+        st.markdown("""
+            <div style="text-align: center; margin-top: 10px;">
+                <a href="https://dashboard.stripe.com/" target="_blank" style="background-color: #f0f2f6; color: #333333; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; border: 1px solid #d0d7de; display: inline-block;">
+                    🔗 前往 Stripe 帳戶與訂閱管理中心
+                </a>
+            </div>
+        """, unsafe_allow_html=True)
 
 # 頁尾資訊
 st.markdown("---")
