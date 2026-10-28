@@ -9,17 +9,13 @@ st.set_page_config(
     layout="centered"
 )
 
-# 🔻 加強版 CSS：徹底清除右下角 Streamlit 標誌、右上方選單與 GitHub/Fork 圖示
+# 隱藏預設選單與標頭
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
-    .stDeployButton {display: none !important;}
     header {visibility: hidden !important;}
-    .viewerBadge_container__1QSob {display: none !important;}
-    div[data-testid="stStatusWidget"] {visibility: hidden !important;}
     
-    /* 自訂優化 UI 樣式 */
     .main-title {
         text-align: center;
         color: #FF4B4B;
@@ -85,13 +81,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 自動偵測網址是否有帶 ?vip=true 參數（付費成功自動帶回）
+# 🔒 【正式上線邏輯】：只允許透過 Stripe 付款成功後帶回的 ?vip=true 自動解鎖
 query_params = st.query_params
 if "vip" in query_params and query_params["vip"] == "true":
     st.session_state.is_vip = True
-
-# 初始化 VIP 狀態
-if "is_vip" not in st.session_state:
+else:
+    # 確保未帶參數時不會意外解鎖
     st.session_state.is_vip = False
 
 # 頁面標題
@@ -136,15 +131,8 @@ with tab1:
     
     st.info("🔥 **想大幅提升命中率、拒絕盲買？請點擊上方【💎 VIP 尊貴會員專區】立即解鎖！**")
 
-# --- Tab 2：VIP 尊貴會員專區（修復版：確保內容完整呈現） ---
+# --- Tab 2：VIP 尊貴會員專區 ---
 with tab2:
-    # 為了方便你隨時測試，如果目前不是 VIP，也直接在上方提供一個一鍵解鎖開關或直接展開
-    col_test1, col_test2 = st.columns([3, 1])
-    with col_test2:
-        if st.button("🔓 測試解鎖 VIP", help="點擊此處可直接在畫面上開啟 VIP 權限進行測試"):
-            st.session_state.is_vip = True
-            st.rerun()
-
     if st.session_state.is_vip:
         st.success("🎉 歡迎回來，尊貴的 VIP 會員！您的所有進階分析工具已全面啟動。")
         
@@ -159,9 +147,7 @@ with tab2:
         
         st.markdown("---")
 
-        # -------------------------------------------------------------
-        # 功能 1：生命密碼運算（3組、不撞以往、可選字數 6~10字）
-        # -------------------------------------------------------------
+        # 功能 1：生命密碼運算
         st.markdown("""
             <div class="section-card">
                 <h3>🧬 1. 生命密碼獨家推演（不重複、防盲門組合）</h3>
@@ -196,9 +182,7 @@ with tab2:
 
         st.markdown("---")
 
-        # -------------------------------------------------------------
         # 功能 2：AI 核心大數據運算結果
-        # -------------------------------------------------------------
         st.markdown("""
             <div class="section-card">
                 <h3>📊 2. AI 核心大數據運算結果</h3>
@@ -216,9 +200,7 @@ with tab2:
 
         st.markdown("---")
 
-        # -------------------------------------------------------------
         # 功能 3：個人幸運方位導航
-        # -------------------------------------------------------------
         st.markdown("""
             <div class="section-card">
                 <h3>🧭 3. 個人幸運方位、時間與地點導航</h3>
@@ -237,9 +219,7 @@ with tab2:
 
         st.markdown("---")
 
-        # -------------------------------------------------------------
         # 功能 4：智慧合買管理系統
-        # -------------------------------------------------------------
         st.markdown("""
             <div class="section-card" style="background: #f0fff4; border-color: #38a169;">
                 <h3 style="color: #2f855a;">🤝 4. 智慧合買與分帳管理系統</h3>
@@ -275,7 +255,7 @@ with tab2:
                     st.warning("⚠️ 注意：認購份數已超出總設定份數，請重新確認！")
 
     else:
-        # 🔴 未付費時顯示的購買引導畫面
+        # 🔴 未付費時顯示的購買引導畫面（絕對安全，未付費絕對進不去 VIP）
         st.markdown("""
             <div class="vip-card">
                 <h1 style="margin-bottom: 10px;">💎 解鎖 AI 智能六合彩 VIP</h1>
@@ -314,4 +294,4 @@ with tab3:
 
 # 頁尾資訊
 st.markdown("---")
-st.markdown("<p style='text-align: center; color: gray; font-size: 12px;'>© 2026 AI Lotto Nav. All rights reserved. 僅供娛樂與數據參考，請理性投注。</p>", unsafe_allow_html=True)
+st.markdown("<p style='text
