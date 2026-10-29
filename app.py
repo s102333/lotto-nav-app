@@ -12,6 +12,15 @@ st.set_page_config(
 # 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並加入吸睛發光與呼吸燈動態特效
 st.markdown("""
     <style>
+    st.markdown("""
+    <style>
+    /* 隱藏右下角所有 Viewer Badge 及帳號徽章 */
+    div[data-testid="stToolbar"] {visibility: hidden !important;}
+    div[class*="viewerBadge"] {display: none !important; visibility: hidden !important;}
+    #GithubIcon {visibility: hidden !important;}
+    .viewerBadge_container__1QSob {display: none !important;}
+    </style>
+""", unsafe_allow_html=True)
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
     header {visibility: hidden !important;}
