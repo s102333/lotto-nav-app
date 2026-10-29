@@ -9,17 +9,19 @@ st.set_page_config(
     layout="centered"
 )
 
-# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件與帳號徽章，並強制修正深色模式下的文字看不見問題
+# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並徹底禁用右下角按鈕的任何點擊跳轉
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
     header {visibility: hidden !important;}
     .stAppDeployButton {display: none !important;}
-    div[data-testid="stToolbar"] {visibility: hidden !important;}
-    div[class*="viewerBadge"] {display: none !important; visibility: hidden !important;}
-    #GithubIcon {visibility: hidden !important;}
-    .viewerBadge_container__1QSob {display: none !important;}
+    div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+    
+    /* 徹底隱藏並禁用右下角 Streamlit / GitHub 標誌的互動與點擊 */
+    div[class*="viewerBadge"] {display: none !important; visibility: hidden !important; pointer-events: none !important;}
+    #GithubIcon {visibility: hidden !important; display: none !important;}
+    .viewerBadge_container__1QSob {display: none !important; pointer-events: none !important;}
     
     /* 強制全局文字在深色模式下保持清晰可見 */
     .stApp {
