@@ -9,13 +9,15 @@ st.set_page_config(
     layout="centered"
 )
 
-# 隱藏預設選單、標頭與底部標誌
+# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
     header {visibility: hidden !important;}
     .stAppDeployButton {display: none !important;}
+    div[data-testid="stToolbar"] {visibility: hidden !important;}
+    div[class*="viewerBadge"] {visibility: hidden !important;}
     
     .main-title {
         text-align: center;
@@ -104,7 +106,7 @@ st.markdown('<div class="sub-title">運用大數據與個人化運勢分析，�
 # 建立橫向分頁標籤
 tab1, tab2, tab3 = st.tabs(["🏠 今日免費號碼", "💎 VIP 尊貴會員專區", "⚙️ 會員帳戶管理"])
 
-# --- Tab 1：首頁／免費試用（運用吸客漏斗邏輯） ---
+# --- Tab 1：首頁／免費試用 ---
 with tab1:
     st.markdown("""
         <div class="section-card">
@@ -125,12 +127,11 @@ with tab1:
             st.success(f"🎯 依據您的生日（{free_birthday}）推算出的免費基礎號碼：**{free_numbers}**")
             st.info("💡 提示：此為基礎隨機運算號碼。若要使用「每期實時動態剔除盲門」的專業數據，請參考下方升級方案！")
             
-    # 💥 強調一石二鳥與解決穿衣頭痛的宣傳橫幅
     st.markdown("""
         <div class="promo-banner">
             <h3 style="color: #2b6cb0; margin-top: 0;">🎁 【今日限時加碼：一石二鳥神級體驗】</h3>
             <p style="font-size: 15px; color: #2d3748; margin-bottom: 8px;">
-                <strong>🔥 男又好、女又好，每日頭痛唔知明天著咩衫？</strong><br>
+                <strong>🔥 男又好、女又好，每日起身頭痛唔知明天著咩衫？</strong><br>
                 訂閱 VIP 後，系統每日自動幫你決定好<strong>「明天專屬個人幸運顏色與催運穿搭指引」</strong>！
             </p>
             <p style="font-size: 13px; color: #e53e3e; margin-bottom: 0;">
@@ -172,7 +173,6 @@ with tab2:
         
         st.markdown("---")
 
-        # 🎁 VIP 專屬：每日解決穿衣煩惱的幸運顏色與穿搭指引
         st.markdown("""
             <div class="section-card" style="background: #e6fffa; border-color: #319795;">
                 <h3 style="color: #2c7a7b;">🎨 🎁 【VIP 獨家解鎖】明日專屬個人幸運顏色與穿搭指引</h3>
@@ -205,7 +205,6 @@ with tab2:
 
         st.markdown("---")
 
-        # 功能 1：生命密碼運算
         st.markdown("""
             <div class="section-card">
                 <h3>🧬 1. 生命密碼獨家推演（每期動態過濾防盲門）</h3>
@@ -240,7 +239,6 @@ with tab2:
 
         st.markdown("---")
 
-        # 功能 2：AI 核心大數據運算結果
         st.markdown("""
             <div class="section-card">
                 <h3>📊 2. AI 核心大數據運算結果</h3>
@@ -258,7 +256,6 @@ with tab2:
 
         st.markdown("---")
 
-        # 功能 3：個人幸運方位導航
         st.markdown("""
             <div class="section-card">
                 <h3>🧭 3. 個人幸運方位、時間與地點導航</h3>
@@ -277,7 +274,6 @@ with tab2:
 
         st.markdown("---")
 
-        # 功能 4：智慧合買管理系統
         st.markdown("""
             <div class="section-card" style="background: #f0fff4; border-color: #38a169;">
                 <h3 style="color: #2f855a;">🤝 4. 智慧合買與分帳管理系統</h3>
@@ -313,7 +309,6 @@ with tab2:
                     st.warning("⚠️ 注意：認購份數已超出總設定份數，請重新確認！")
 
     else:
-        # 🔴 未付費時顯示的購買引導畫面
         st.markdown("""
             <div class="vip-card">
                 <h1 style="margin-bottom: 10px;">💎 解鎖 AI 智能六合彩 VIP</h1>
