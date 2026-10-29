@@ -118,7 +118,7 @@ else:
 
 # 頁面標題
 st.markdown('<div class="main-title">🔮 AI 智能六合彩資料導航</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">運用大數據與個人化運勢分析，助您精準掌握幸運號碼</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">運用大數據與個人化【生日生命密碼】分析，助您精準掌握高勝率幸運號碼</div>', unsafe_allow_html=True)
 
 # 建立橫向分頁標籤
 tab1, tab2, tab3 = st.tabs(["🏠 今日免費號碼", "💎 VIP 尊貴會員專區", "⚙️ 會員帳戶管理"])
@@ -127,8 +127,8 @@ tab1, tab2, tab3 = st.tabs(["🏠 今日免費號碼", "💎 VIP 尊貴會員專
 with tab1:
     st.markdown("""
         <div class="section-card">
-            <h3>🍀 您的個人化生日幸運號碼（免費體驗）</h3>
-            <p><strong>⚠️ 重要提醒</strong>：買六合彩絕對不能盲目亂買！如果隨便亂買「盲門死角」號碼，只會白白浪費金錢。必須結合您專屬的<strong>個人生日密碼</strong>與能量頻率，才能精準過濾無謂注數！</p>
+            <h3>🍀 您的個人化生日生命密碼（免費體驗）</h3>
+            <p><strong>⚠️ 重要提醒</strong>：買六合彩絕對不能盲目亂買！如果隨便亂買「盲門死角」號碼，只會白白浪費金錢。必須結合您專屬的<strong>個人生日生命密碼</strong>與能量頻率，才能精準過濾無謂注數，大幅提高命中率！</p>
         </div>
     """, unsafe_allow_html=True)
     
@@ -138,26 +138,13 @@ with tab1:
     
     col_a, col_b, col_c = st.columns([1, 2, 1])
     with col_b:
-        if st.button("🎲 立即生成今日免費生日號碼", use_container_width=True):
+        if st.button("🎲 立即生成今日免費生日生命密碼號碼", use_container_width=True):
             random.seed(str(free_birthday))
             free_numbers = sorted(random.sample(range(1, 50), 6))
-            st.success(f"🎯 依據您的生日（{free_birthday}）推算出的免費基礎號碼：**{free_numbers}**")
-            st.info("💡 提示：此為基礎隨機運算號碼。若要解鎖「心水號碼歷史回測機」與「動態防盲門」，請升級 VIP！")
+            st.success(f"🎯 依據您的生日生命密碼（{free_birthday}）推算出的免費基礎號碼：**{free_numbers}**")
+            st.info("💡 提示：此為基礎隨機運算號碼。若要解鎖「生日生命密碼多組深度推演」與「心水號碼歷史回測機」，請升級 VIP！")
             
-    st.markdown("""
-        <div class="promo-banner">
-            <h3 style="margin-top: 0;">🎁 【今日限時加碼：一石二鳥神級體驗】</h3>
-            <p style="font-size: 15px; margin-bottom: 8px;">
-                <strong>🔥 男又好、女又好，每日起身頭痛唔知明天著咩衫？</strong><br>
-                訂閱 VIP 後，系統每日自動幫你決定好<strong>「明天專屬個人幸運顏色與催運穿搭指引」</strong>！
-            </p>
-            <p style="font-size: 13px; margin-bottom: 0;">
-                ⏱️ <strong>一舉兩得</strong>：既解決每日穿衣煩惱，又全方位催旺財運磁場！限今日登記有效！
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # --- 強力升級的 VIP 預告與文案 ---
+    # --- 強力升級的 VIP 預告與核心賣點 ---
     st.markdown("""
         <div class="section-card" style="background: #fffaf0; border: 2px solid #dd6b20;">
             <h3 style="color: #c05621; margin-top: 0;">🔍 停一停！你平時買開嗰 6 個「心水號碼」，究竟過去幾十年幫你中過幾多次獎？</h3>
@@ -173,15 +160,15 @@ with tab1:
         <div class="warning-box" style="background: #fff5f5; border-left: 5px solid #e53e3e; padding: 18px; border-radius: 8px;">
             <h3 style="color: #c53030; margin-top: 0;">⚠️ 為什麼你必須馬上成為 VIP？（拒絕盲買，拒絕將錢掉落鹹水海！）</h3>
             <p style="font-size: 15px; color: #2d3748;">
-                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong>「盲門死角」</strong>。解鎖 VIP，等於請了一個 24 小時幫你精準過濾數據的 AI 參謀：
+                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong>「盲門死角」</strong>。解鎖 VIP，運用你的<strong>生日生命密碼</strong>作為最強導航：
             </p>
             <ul style="font-size: 15px; color: #2d3748; line-height: 1.8;">
                 <li>🔍 <strong>【震撼殺手鐧】心水號碼歷史大數據回測機</strong>：親自驗證你手頭上那組號碼過去究竟中過幾多次頭、二、三獎，拒絕盲目執著！</li>
+                <li>🧬 <strong>生日生命密碼獨家深度推演</strong>：結合你的真實生辰八字與能量頻率，每期動態過濾防盲門，精準推演 3 組互不撞號的高勝率組合。</li>
                 <li>🔄 <strong>每期實時動態剔除盲門</strong>：全港獨家！每期攪珠後第一時間更新，自動幫你洗走歷史盲門死角，避開高風險陷阱。</li>
-                <li>🎨 <strong>一石二鳥「明日開運穿搭管家」</strong>：男士女士唔使再為「明天返工著咩衫」頭痛！系統每日自動批算專屬幸運色，番工出街兼旺財氣！</li>
-                <li>🧬 <strong>多組不重疊生命密碼（6 至 10 字任揀）</strong>：結合你的真實生辰八字與能量頻率，精準推演 3 組互不撞號的高勝率組合。</li>
                 <li>📊 <strong>AI 核心大數據走勢矩陣</strong>：結合最新冷熱門走勢與靈數模型，大幅提升命中率。</li>
                 <li>🤝 <strong>智慧合買與分帳管理系統</strong>：與同事、老友記夾份買彩票？系統自動幫你計好每人認購份數同應付金額，清楚無爭拗！</li>
+                <li>🎁 <strong>【今日限定 BONUS】一石二鳥「明日開運穿搭管家」</strong>：今日登記額外送你專屬開運幸運色批算，返工出街唔使再頭痛著咩衫，全方位旺財氣！</li>
             </ul>
         </div>
     """, unsafe_allow_html=True)
@@ -189,7 +176,7 @@ with tab1:
     st.markdown("""
         <div style="text-align: center; margin: 25px 0;">
             <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn" style="font-size: 20px; padding: 16px 36px;">
-                💎 立即解鎖全部 VIP 獨家功能（僅需 HK$48/月）
+                💎 立即解鎖生日生命密碼導航與全部 VIP 功能（僅需 HK$48/月）
             </a>
             <p style="color: #718096; font-size: 13px; margin-top: 8px;">🔒 Stripe 官方加密結帳，隨時可自主取消訂閱，一杯咖啡錢換取專業數據導航！</p>
         </div>
@@ -198,9 +185,9 @@ with tab1:
 # --- Tab 2：VIP 尊貴會員專區 ---
 with tab2:
     if st.session_state.is_vip:
-        st.success("🎉 歡迎回來，尊貴的 VIP 會員！您的心水號碼歷史回測機與每日開運穿搭管家已全面啟動。")
+        st.success("🎉 歡迎回來，尊貴的 VIP 會員！您的生日生命密碼導航與歷史回測機已全面啟動。")
         
-        # --- VIP 殺手鐧：心水號碼歷史回測機 ---
+        # --- VIP 殺手鐧 1：心水號碼歷史回測機 ---
         st.markdown("""
             <div class="section-card" style="background: #fffaf0 !important; border-color: #dd6b20;">
                 <h3 style="color: #c05621 !important;">🔍 【VIP 獨家重磅】心水號碼歷史大數據回測機</h3>
@@ -260,8 +247,8 @@ with tab2:
 
         st.markdown("""
             <div class="section-card" style="background: #fdf6e2 !important; border-color: #d69e2e;">
-                <h3 style="color: #b7791f !important;">🔑 【核心設定】請輸入您的真實出生日期</h3>
-                <p style="color: #222222 !important;"><strong>注意</strong>：以下所有的生命密碼、AI 大數據運算、<strong>每日明日幸運色</strong>，全部都是結合<strong>「每期最新更新的資料庫」</strong>並即時根據您輸入的這組生日密碼推算出來的！請務必核對準確。</p>
+                <h3 style="color: #b7791f !important;">🔑 【核心設定】請輸入您的真實出生日期（生命密碼引擎）</h3>
+                <p style="color: #222222 !important;"><strong>注意</strong>：以下所有的生日生命密碼推演、AI 大數據運算，全部都是結合<strong>「每期最新更新的資料庫」</strong>並即時根據您輸入的生辰推算出來的！請務必核對準確。</p>
             </div>
         """, unsafe_allow_html=True)
         
@@ -269,48 +256,17 @@ with tab2:
         
         st.markdown("---")
 
-        st.markdown("""
-            <div class="section-card" style="background: #e6fffa !important; border-color: #319795;">
-                <h3 style="color: #2c7a7b !important;">🎨 🎁 明日專屬個人幸運顏色與穿搭指引</h3>
-                <p style="color: #222222 !important;">男士女士唔使再為「明天著咩衫」頭痛！系統結合您的生日頻率與明天天地磁場，一秒幫您決定好最夾的開運穿搭：</p>
-            </div>
-        """, unsafe_allow_html=True)
-        
-        tomorrow_date = date.today() + timedelta(days=1)
-        if st.button("✨ 一秒解決煩惱：生成【明天】專屬開運顏色與服飾", use_container_width=True, key="btn_lucky_color"):
-            random.seed(str(vip_birthday) + str(tomorrow_date))
-            color_pool = [
-                ("墨綠色 / 森林綠", "主正財與事業突破，特別適合開會、談生意或返工穿着，氣場十足"),
-                ("珍珠白 / 米灰色", "主貴人相助、化解小人，百搭得黎令思緒保持清晰冷靜"),
-                ("寶藍色 / 深海藍", "增強直覺與靈感，對挑選號碼、日常決策極有幫助，低調而專業"),
-                ("香檳金 / 暖卡其", "極強的吸金磁場，有利財運與橫財氣場凝聚，出街顯得精神奕奕"),
-                ("紫紅色 / 暗朱紅色", "提升個人氣場與自信，增強突發好運與桃花貴人嘅機率")
-            ]
-            chosen_color, color_meaning = random.choice(color_pool)
-            
-            st.markdown(f"""
-                <div class="lucky-box" style="border-left-color: #319795;">
-                    <h4>🌟 您的【{tomorrow_date.strftime('%Y-%m-%d')}（明天）】一石二鳥催運穿搭指南：</h4>
-                    <p style="font-size: 16px; line-height: 1.6;">
-                        • 🎯 <strong>明天開運主色調</strong>：<span style="color: #2b6cb0; font-weight: bold; font-size: 18px;">{chosen_color}</span><br>
-                        • 👔 <strong>穿搭建議</strong>：唔使再頭痛！上衣或外套直接揀呢個色系，今晚準備好，明天出門返工直接吸財兼吸貴人！<br>
-                        • 📈 <strong>雙效磁場</strong>：{color_meaning}
-                    </p>
-                </div>
-            """, unsafe_allow_html=True)
-
-        st.markdown("---")
-
+        # --- VIP 核心功能 1：生命密碼推演 ---
         st.markdown("""
             <div class="section-card">
-                <h3>🧬 1. 生命密碼獨家推演（每期動態過濾防盲門）</h3>
-                <p>結合您的生日頻率與最新一期更新的開彩矩陣，即時生成 3 組互相不撞號的精準組合：</p>
+                <h3>🧬 1. 生日生命密碼獨家深度推演（提高命中率・動態防盲門）</h3>
+                <p>結合您的生日頻率與最新一期更新的開彩矩陣，即時生成 3 組互相不撞號的高勝率精準組合：</p>
             </div>
         """, unsafe_allow_html=True)
         
         pick_count = st.selectbox("🎯 請選擇您心儀的組合字數：", [6, 7, 8, 9, 10], index=0, key="vip_pick_count")
         
-        if st.button("✨ 立即依最新資料庫與生日生成 3 組生命密碼", use_container_width=True, key="btn_life_code"):
+        if st.button("✨ 立即依最新資料庫與生日生命密碼生成 3 組高勝率組合", use_container_width=True, key="btn_life_code"):
             seed_str = str(vip_birthday) + str(pick_count)
             random.seed(seed_str)
             
@@ -323,7 +279,7 @@ with tab2:
             
             st.markdown(f"""
                 <div class="lucky-box">
-                    <h4>🌟 專屬生命密碼推薦（生辰：{vip_birthday} ｜ 規格：{pick_count} 字）：</h4>
+                    <h4>🌟 專屬生日生命密碼推薦（生辰：{vip_birthday} ｜ 規格：{pick_count} 字）：</h4>
                     <p style="font-size: 17px; font-weight: bold; line-height: 1.6;">
                         • 第一組：{group1}<br>
                         • 第二組：{group2}<br>
@@ -335,6 +291,7 @@ with tab2:
 
         st.markdown("---")
 
+        # --- VIP 核心功能 2：AI 大數據運算 ---
         st.markdown("""
             <div class="section-card">
                 <h3>📊 2. AI 核心大數據運算結果</h3>
@@ -352,6 +309,7 @@ with tab2:
 
         st.markdown("---")
 
+        # --- VIP 核心功能 3：幸運方位導航 ---
         st.markdown("""
             <div class="section-card">
                 <h3>🧭 3. 個人幸運方位、時間與地點導航</h3>
@@ -370,6 +328,7 @@ with tab2:
 
         st.markdown("---")
 
+        # --- VIP 核心功能 4：智慧合買 ---
         st.markdown("""
             <div class="section-card" style="background: #f0fff4 !important; border-color: #38a169;">
                 <h3 style="color: #2f855a !important;">🤝 4. 智慧合買與分帳管理系統</h3>
@@ -404,13 +363,46 @@ with tab2:
                 else:
                     st.warning("⚠️ 注意：認購份數已超出總設定份數，請重新確認！")
 
+        st.markdown("---")
+
+        # --- 壓軸 BONUS：明日開運穿搭管家 ---
+        st.markdown("""
+            <div class="section-card" style="background: #e6fffa !important; border-color: #319795;">
+                <h3 style="color: #2c7a7b !important;">🎁 【今日限定 BONUS】明日專屬個人幸運顏色與穿搭指引</h3>
+                <p style="color: #222222 !important;">作為今日成為 VIP 的額外驚喜加碼！男士女士唔使再為「明天著咩衫」頭痛，系統一秒幫您決定好最夾的開運穿搭，全方位旺財氣：</p>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        tomorrow_date = date.today() + timedelta(days=1)
+        if st.button("✨ 一秒解決煩惱：生成【明天】專屬開運顏色與服飾", use_container_width=True, key="btn_lucky_color"):
+            random.seed(str(vip_birthday) + str(tomorrow_date))
+            color_pool = [
+                ("墨綠色 / 森林綠", "主正財與事業突破，特別適合開會、談生意或返工穿着，氣場十足"),
+                ("珍珠白 / 米灰色", "主貴人相助、化解小人，百搭得黎令思緒保持清晰冷靜"),
+                ("寶藍色 / 深海藍", "增強直覺與靈感，對挑選號碼、日常決策極有幫助，低調而專業"),
+                ("香檳金 / 暖卡其", "極強的吸金磁場，有利財運與橫財氣場凝聚，出街顯得精神奕奕"),
+                ("紫紅色 / 暗朱紅色", "提升個人氣場與自信，增強突發好運與桃花貴人嘅機率")
+            ]
+            chosen_color, color_meaning = random.choice(color_pool)
+            
+            st.markdown(f"""
+                <div class="lucky-box" style="border-left-color: #319795;">
+                    <h4>🌟 您的【{tomorrow_date.strftime('%Y-%m-%d')}（明天）】一石二鳥催運穿搭指南：</h4>
+                    <p style="font-size: 16px; line-height: 1.6;">
+                        • 🎯 <strong>明天開運主色調</strong>：<span style="color: #2b6cb0; font-weight: bold; font-size: 18px;">{chosen_color}</span><br>
+                        • 👔 <strong>穿搭建議</strong>：唔使再頭痛！上衣或外套直接揀呢個色系，今晚準備好，明天出門返工直接吸財兼吸貴人！<br>
+                        • 📈 <strong>雙效磁場</strong>：{color_meaning}
+                    </p>
+                </div>
+            """, unsafe_allow_html=True)
+
     else:
         st.markdown("""
             <div class="vip-card">
                 <h1 style="margin-bottom: 10px;">💎 解鎖 AI 智能六合彩 VIP</h1>
                 <p style="font-size: 16px; margin-bottom: 10px;">
-                    <strong>🔥【獨家重磅功能】心水號碼歷史大數據回測機！</strong><br>
-                    即時檢驗你的心水號碼歷史中過幾多次頭獎、二獎、三獎、四獎！兼享每期動態防盲門與每日明日幸運色！
+                    <strong>🔥【獨家重磅功能】心水號碼歷史大數據回測機 ＋ 生日生命密碼導航！</strong><br>
+                    即時檢驗你的心水號碼歷史中過幾多次頭獎二獎！運用生日生命密碼動態防盲門，更送你今日限定開運穿搭 BONUS！
                 </p>
                 <h2 style="color: #d93838; margin-top: 5px;">💰 僅需 HK$48 / 月</h2>
             </div>
@@ -419,7 +411,7 @@ with tab2:
         st.markdown("""
             <div style="text-align: center; margin: 30px 0;">
                 <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn">
-                    💳 立即線上信用卡升級 VIP（$48/月・即時回測心水號碼）
+                    💳 立即線上信用卡升級 VIP（$48/月・即時回測心水號碼與生命密碼）
                 </a>
                 <p style="color: #777777; font-size: 13px; margin-top: 10px;">🔒 由 Stripe 官方安全加密提供支援，隨時可取消訂閱</p>
             </div>
@@ -430,7 +422,7 @@ with tab3:
     st.markdown("""
         <div class="section-card">
             <h3>⚙️ 帳戶與訂閱管理</h3>
-            <p>如果您已經是我們的 VIP 會員, 您可以隨時前往管理中心查看訂單、更新信用卡或取消訂閱：</p>
+            <p>如果您已經是我們的 VIP 會員，您可以隨時前往管理中心查看訂單、更新信用卡或取消訂閱：</p>
         </div>
     """, unsafe_allow_html=True)
     
