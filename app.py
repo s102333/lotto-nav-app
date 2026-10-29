@@ -9,24 +9,17 @@ st.set_page_config(
     layout="centered"
 )
 
-# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並加入吸睛發光與呼吸燈動態特效
+# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件與帳號徽章
 st.markdown("""
     <style>
-    st.markdown("""
-    <style>
-    /* 隱藏右下角所有 Viewer Badge 及帳號徽章 */
-    div[data-testid="stToolbar"] {visibility: hidden !important;}
-    div[class*="viewerBadge"] {display: none !important; visibility: hidden !important;}
-    #GithubIcon {visibility: hidden !important;}
-    .viewerBadge_container__1QSob {display: none !important;}
-    </style>
-""", unsafe_allow_html=True)
     #MainMenu {visibility: hidden !important;}
     footer {visibility: hidden !important;}
     header {visibility: hidden !important;}
     .stAppDeployButton {display: none !important;}
     div[data-testid="stToolbar"] {visibility: hidden !important;}
-    div[class*="viewerBadge"] {visibility: hidden !important;}
+    div[class*="viewerBadge"] {display: none !important; visibility: hidden !important;}
+    #GithubIcon {visibility: hidden !important;}
+    .viewerBadge_container__1QSob {display: none !important;}
     
     /* 強制全局文字在深色模式下保持清晰可見 */
     .stApp {
@@ -176,7 +169,7 @@ with tab1:
         <div class="warning-box" style="background: #fff5f5; border-left: 5px solid #e53e3e; padding: 18px; border-radius: 8px;">
             <h3 style="color: #c53030; margin-top: 0;">⚠️ 為什麼你必須馬上成為 VIP？（拒絕盲買，拒絕將錢掉落鹹水海！）</h3>
             <p style="font-size: 15px; color: #2d3748;">
-                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong><span>「盲門死角」</span></strong>。解鎖 VIP，運用你的<strong>生命密碼</strong>作為最強導航：
+                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong>「盲門死角」</strong>。解鎖 VIP，運用你的<strong>生命密碼</strong>作為最強導航：
             </p>
             <ul style="font-size: 15px; color: #2d3748; line-height: 1.8;">
                 <li>🔍 <strong>【震撼殺手鐧】心水號碼歷史大數據回測機</strong>：親自驗證你手頭上那組號碼過去究竟中過幾多次頭、二、三獎，拒絕盲目執著！</li>
@@ -188,7 +181,7 @@ with tab1:
         </div>
     """, unsafe_allow_html=True)
     
-    # --- 拆出黎並加入動態發光特效的今日限定 BONUS 預告 ---
+    # --- 動態發光特效的今日限定 BONUS 預告 ---
     st.markdown("""
         <div class="bonus-glow-card">
             <h3 style="margin-top: 0;">🎁 ✨ 【今日限定 BONUS】明日專屬個人幸運顏色與穿搭指引</h3>
@@ -198,7 +191,7 @@ with tab1:
         </div>
     """, unsafe_allow_html=True)
     
-    # --- 根據是否已比錢（VIP 狀態）動態切換按鈕區 ---
+    # --- 根據是否已付費（VIP 狀態）動態切換按鈕區 ---
     if st.session_state.is_vip:
         st.markdown("""
             <div style="background: #e6fffa; border: 2px solid #319795; padding: 20px; border-radius: 12px; text-align: center; margin: 25px 0;">
@@ -372,7 +365,7 @@ with tab2:
             | 🌟 **今日吉利方位** | **正南方（南離宮）** — 主貴人與突發靈感 |
             | 🏠 **屋企下注吉位** | 建議在 **客廳正南方** 或 **書房工作桌前** 打開手機進行網上投注 |
             | 🏢 **推薦香港投注站** | **屯門市廣場投注站** 或 **元朗青山公路投注站**（能量場與您最契合） |
-            | ⏰ **最佳黃金時段** | **下午 15:15 至 17:00**（申時金水相生，切勿亂揀時間盲買） |
+            | ⏰ **最佳黃金時段** | **下午 15:15 至 17:00** (申時金水相生，切勿亂揀時間盲買) |
         """, unsafe_allow_html=True)
 
         st.markdown("---")
