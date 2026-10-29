@@ -9,7 +9,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並加入「今日限定 BONUS」的吸睛呼吸燈與閃爍動態特效
+# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並加入吸睛發光與呼吸燈動態特效
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden !important;}
@@ -162,12 +162,12 @@ with tab1:
         </div>
     """, unsafe_allow_html=True)
 
-    # --- VIP 特點（正名生命密碼） ---
+    # --- VIP 特點 ---
     st.markdown("""
         <div class="warning-box" style="background: #fff5f5; border-left: 5px solid #e53e3e; padding: 18px; border-radius: 8px;">
             <h3 style="color: #c53030; margin-top: 0;">⚠️ 為什麼你必須馬上成為 VIP？（拒絕盲買，拒絕將錢掉落鹹水海！）</h3>
             <p style="font-size: 15px; color: #2d3748;">
-                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong>「盲門死角」</strong>。解鎖 VIP，運用你的<strong>生命密碼</strong>作為最強導航：
+                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong><span>「盲門死角」</span></strong>。解鎖 VIP，運用你的<strong>生命密碼</strong>作為最強導航：
             </p>
             <ul style="font-size: 15px; color: #2d3748; line-height: 1.8;">
                 <li>🔍 <strong>【震撼殺手鐧】心水號碼歷史大數據回測機</strong>：親自驗證你手頭上那組號碼過去究竟中過幾多次頭、二、三獎，拒絕盲目執著！</li>
@@ -182,26 +182,50 @@ with tab1:
     # --- 拆出黎並加入動態發光特效的今日限定 BONUS 預告 ---
     st.markdown("""
         <div class="bonus-glow-card">
-            <h3 style="margin-top: 0;">🎁 ✨ 【今日限時尊貴加碼 BONUS】一石二鳥「明日開運穿搭管家」</h3>
+            <h3 style="margin-top: 0;">🎁 ✨ 【今日限定 BONUS】明日專屬個人幸運顏色與穿搭指引</h3>
             <p style="font-size: 15px; line-height: 1.6; margin-bottom: 0;">
                 <strong>🔥 獨家附贈彩蛋</strong>：今日登記成為 VIP，額外即時解鎖專屬個人開運幸運色批算！男士女士唔使再為「明天返工著咩衫」頭痛，一秒決定好最旺財氣嘅穿搭，全方位催旺你的橫財磁場！
             </p>
         </div>
     """, unsafe_allow_html=True)
     
-    st.markdown("""
-        <div style="text-align: center; margin: 25px 0;">
-            <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn" style="font-size: 20px; padding: 16px 36px;">
-                💎 立即解鎖生命密碼導航與全部 VIP 功能（僅需 HK$48/月）
-            </a>
-            <p style="color: #718096; font-size: 13px; margin-top: 8px;">🔒 Stripe 官方加密結帳，隨時可自主取消訂閱，一杯咖啡錢換取專業數據導航！</p>
-        </div>
-    """, unsafe_allow_html=True)
+    # --- 根據是否已比錢（VIP 狀態）動態切換按鈕區 ---
+    if st.session_state.is_vip:
+        st.markdown("""
+            <div style="background: #e6fffa; border: 2px solid #319795; padding: 20px; border-radius: 12px; text-align: center; margin: 25px 0;">
+                <h3 style="color: #2c7a7b; margin-top: 0;">🎉 恭喜您！您的 VIP 尊貴會員資格已成功啟動！</h3>
+                <p style="font-size: 16px; color: #2d3748; margin-bottom: 15px;">
+                    <strong>✨ 專屬提示</strong>：您的生命密碼與歷史回測權限已全數開通。<br>
+                    ⚠️ <em>溫馨提示：本帳戶與您的個人生命磁場深度綁定，請切勿將帳號借予他人使用，以免個人財運與能量外洩！</em>
+                </p>
+                <p style="font-size: 15px; color: #2b6cb0; font-weight: bold;">
+                    👉 請直接點擊上方分頁標籤：【💎 VIP 尊貴會員專區】開始使用！
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+            <div style="text-align: center; margin: 25px 0;">
+                <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn" style="font-size: 20px; padding: 16px 36px;">
+                    💎 立即解鎖生命密碼導航與全部 VIP 功能（僅需 HK$48/月）
+                </a>
+                <p style="color: #718096; font-size: 13px; margin-top: 8px;">🔒 Stripe 官方加密結帳，隨時可自主取消訂閱，一杯咖啡錢換取專業數據導航！</p>
+            </div>
+        """, unsafe_allow_html=True)
 
 # --- Tab 2：VIP 尊貴會員專區 ---
 with tab2:
     if st.session_state.is_vip:
         st.success("🎉 歡迎回來，尊貴的 VIP 會員！您的生命密碼導航與歷史回測機已全面啟動。")
+        
+        # --- 玄學安全警示（防借人） ---
+        st.markdown("""
+            <div style="background: #fffaf0; border-left: 5px solid #dd6b20; padding: 12px 15px; margin-bottom: 20px; border-radius: 4px;">
+                <p style="font-size: 14px; color: #c05621; margin: 0;">
+                    🛡️ <strong>能量保護提示</strong>：本系統之生命密碼與您的個人生辰磁場實時對應。<strong>請勿將帳號或預測結果隨意外借他人</strong>，以免個人運勢與財氣磁場分散外洩。祝您期期中大獎！
+                </p>
+            </div>
+        """, unsafe_allow_html=True)
         
         # --- VIP 殺手鐧 1：心水號碼歷史回測機 ---
         st.markdown("""
