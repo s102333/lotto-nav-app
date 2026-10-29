@@ -9,7 +9,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件
+# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並強制修復深色模式白字問題
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden !important;}
@@ -18,6 +18,11 @@ st.markdown("""
     .stAppDeployButton {display: none !important;}
     div[data-testid="stToolbar"] {visibility: hidden !important;}
     div[class*="viewerBadge"] {visibility: hidden !important;}
+    
+    /* 強制全局文字在深色模式下保持清晰可見 */
+    .stApp {
+        color: #222222;
+    }
     
     .main-title {
         text-align: center;
@@ -28,24 +33,28 @@ st.markdown("""
     }
     .sub-title {
         text-align: center;
-        color: #666666;
+        color: #555555;
         font-size: 16px;
         margin-bottom: 25px;
     }
     .section-card {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
+        color: #222222 !important;
         padding: 22px;
         border-radius: 12px;
         border: 1px solid #e0e0e0;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         margin-bottom: 20px;
     }
+    .section-card h3, .section-card p, .section-card strong, .section-card li {
+        color: #222222 !important;
+    }
     .vip-card {
         background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
         padding: 30px;
         border-radius: 12px;
         text-align: center;
-        color: #222222;
+        color: #222222 !important;
         box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         margin-bottom: 25px;
     }
@@ -67,27 +76,35 @@ st.markdown("""
         transform: translateY(-2px);
     }
     .lucky-box {
-        background: #f8f9fa;
+        background: #f8f9fa !important;
+        color: #222222 !important;
         border-left: 5px solid #38a169;
         padding: 15px;
         margin: 10px 0;
         border-radius: 4px;
     }
     .warning-box {
-        background: #fff5f5;
+        background: #fff5f5 !important;
+        color: #c53030 !important;
         border-left: 5px solid #e53e3e;
         padding: 15px;
         margin: 15px 0;
         border-radius: 4px;
-        color: #c53030;
+    }
+    .warning-box h4, .warning-box p, .warning-box li {
+        color: #c53030 !important;
     }
     .promo-banner {
-        background: #ebf8ff;
+        background: #ebf8ff !important;
+        color: #2b6cb0 !important;
         border: 2px dashed #3182ce;
         padding: 18px;
         border-radius: 10px;
         margin-bottom: 20px;
         text-align: center;
+    }
+    .promo-banner h3, .promo-banner p {
+        color: #2b6cb0 !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -129,12 +146,12 @@ with tab1:
             
     st.markdown("""
         <div class="promo-banner">
-            <h3 style="color: #2b6cb0; margin-top: 0;">🎁 【今日限時加碼：一石二鳥神級體驗】</h3>
-            <p style="font-size: 15px; color: #2d3748; margin-bottom: 8px;">
+            <h3 style="margin-top: 0;">🎁 【今日限時加碼：一石二鳥神級體驗】</h3>
+            <p style="font-size: 15px; margin-bottom: 8px;">
                 <strong>🔥 男又好、女又好，每日起身頭痛唔知明天著咩衫？</strong><br>
                 訂閱 VIP 後，系統每日自動幫你決定好<strong>「明天專屬個人幸運顏色與催運穿搭指引」</strong>！
             </p>
-            <p style="font-size: 13px; color: #e53e3e; margin-bottom: 0;">
+            <p style="font-size: 13px; margin-bottom: 0;">
                 ⏱️ <strong>一舉兩得</strong>：既解決每日穿衣煩惱，又全方位催旺財運磁場！限今日登記有效！
             </p>
         </div>
@@ -164,9 +181,9 @@ with tab2:
         
         # --- VIP 殺手鐧新功能：歷史心水號碼回測機 ---
         st.markdown("""
-            <div class="section-card" style="background: #fffaf0; border-color: #dd6b20;">
-                <h3 style="color: #c05621;">🔍 【VIP 獨家重磅功能】心水號碼歷史對對碰與勝率回測</h3>
-                <p>輸入你平時買開、或者靈感發揮嘅 <strong>6 個心水號碼</strong>，AI 將即時掃描過往歷史開彩數據庫，為你計算這組號碼歷史上中過幾多次獎項！</p>
+            <div class="section-card" style="background: #fffaf0 !important; border-color: #dd6b20;">
+                <h3 style="color: #c05621 !important;">🔍 【VIP 獨家重磅功能】心水號碼歷史對對碰與勝率回測</h3>
+                <p style="color: #222222 !important;">輸入你平時買開、或者靈感發揮嘅 <strong>6 個心水號碼</strong>，AI 將即時掃描過往歷史開彩數據庫，為你計算這組號碼歷史上中過幾多次獎項！</p>
             </div>
         """, unsafe_allow_html=True)
         
@@ -199,9 +216,9 @@ with tab2:
                 cold_num = [n for n in user_pick_sorted if n not in hot_num][0]
                 
                 st.markdown(f"""
-                    <div class="lucky-box" style="border-left-color: #dd6b20; background: #fffaf0;">
+                    <div class="lucky-box" style="border-left-color: #dd6b20;">
                         <h4>📊 您的心水號碼組合【 {user_pick_sorted} 】歷史數據回測結果：</h4>
-                        <p style="font-size: 16px; color: #2d3748; line-height: 1.8;">
+                        <p style="font-size: 16px; line-height: 1.8;">
                             • 🥇 <strong>頭獎 (6字全中)</strong>：0 次（非常幸運！此黃金組合歷史尚未暴光，隨時成為下一位頭獎得主！）<br>
                             • 🥉 <strong>三獎 (中 5 個字)</strong>：累積出現 <strong>{win_3} 次</strong>！<br>
                             • 🏅 <strong>四/五獎 (中 4 個字)</strong>：累積出現 <strong>{win_4} 次</strong>！<br>
@@ -218,9 +235,9 @@ with tab2:
         st.markdown("---")
 
         st.markdown("""
-            <div class="section-card" style="background: #fdf6e2; border-color: #d69e2e;">
-                <h3 style="color: #b7791f;">🔑 【核心設定】請輸入您的真實出生日期</h3>
-                <p><strong>注意</strong>：以下所有的生命密碼、AI 大數據運算、<strong>每日明日幸運色</strong>，全部都是結合<strong>「每期最新更新的資料庫」</strong>並即時根據您輸入的這組生日密碼推算出來的！請務必核對準確。</p>
+            <div class="section-card" style="background: #fdf6e2 !important; border-color: #d69e2e;">
+                <h3 style="color: #b7791f !important;">🔑 【核心設定】請輸入您的真實出生日期</h3>
+                <p style="color: #222222 !important;"><strong>注意</strong>：以下所有的生命密碼、AI 大數據運算、<strong>每日明日幸運色</strong>，全部都是結合<strong>「每期最新更新的資料庫」</strong>並即時根據您輸入的這組生日密碼推算出來的！請務必核對準確。</p>
             </div>
         """, unsafe_allow_html=True)
         
@@ -229,9 +246,9 @@ with tab2:
         st.markdown("---")
 
         st.markdown("""
-            <div class="section-card" style="background: #e6fffa; border-color: #319795;">
-                <h3 style="color: #2c7a7b;">🎨 🎁 明日專屬個人幸運顏色與穿搭指引</h3>
-                <p>男士女士唔使再為「明天著咩衫」頭痛！系統結合您的生日頻率與明天天地磁場，一秒幫您決定好最夾的開運穿搭：</p>
+            <div class="section-card" style="background: #e6fffa !important; border-color: #319795;">
+                <h3 style="color: #2c7a7b !important;">🎨 🎁 明日專屬個人幸運顏色與穿搭指引</h3>
+                <p style="color: #222222 !important;">男士女士唔使再為「明天著咩衫」頭痛！系統結合您的生日頻率與明天天地磁場，一秒幫您決定好最夾的開運穿搭：</p>
             </div>
         """, unsafe_allow_html=True)
         
@@ -250,7 +267,7 @@ with tab2:
             st.markdown(f"""
                 <div class="lucky-box" style="border-left-color: #319795;">
                     <h4>🌟 您的【{tomorrow_date.strftime('%Y-%m-%d')}（明天）】一石二鳥催運穿搭指南：</h4>
-                    <p style="font-size: 16px; color: #2d3748; line-height: 1.6;">
+                    <p style="font-size: 16px; line-height: 1.6;">
                         • 🎯 <strong>明天開運主色調</strong>：<span style="color: #2b6cb0; font-weight: bold; font-size: 18px;">{chosen_color}</span><br>
                         • 👔 <strong>穿搭建議</strong>：唔使再頭痛！上衣或外套直接揀呢個色系，今晚準備好，明天出門返工直接吸財兼吸貴人！<br>
                         • 📈 <strong>雙效磁場</strong>：{color_meaning}
@@ -283,7 +300,7 @@ with tab2:
             st.markdown(f"""
                 <div class="lucky-box">
                     <h4>🌟 專屬生命密碼推薦（生辰：{vip_birthday} ｜ 規格：{pick_count} 字）：</h4>
-                    <p style="font-size: 17px; font-weight: bold; color: #2d3748; line-height: 1.6;">
+                    <p style="font-size: 17px; font-weight: bold; line-height: 1.6;">
                         • 第一組：{group1}<br>
                         • 第二組：{group2}<br>
                         • 第三組：{group3}<br>
@@ -330,9 +347,9 @@ with tab2:
         st.markdown("---")
 
         st.markdown("""
-            <div class="section-card" style="background: #f0fff4; border-color: #38a169;">
-                <h3 style="color: #2f855a;">🤝 4. 智慧合買與分帳管理系統</h3>
-                <p>與親友夾份買彩票時，自動記錄成員認購份數與金額，避免混亂：</p>
+            <div class="section-card" style="background: #f0fff4 !important; border-color: #38a169;">
+                <h3 style="color: #2f855a !important;">🤝 4. 智慧合買與分帳管理系統</h3>
+                <p style="color: #222222 !important;">與親友夾份買彩票時，自動記錄成員認購份數與金額，避免混亂：</p>
             </div>
         """, unsafe_allow_html=True)
         
@@ -378,7 +395,7 @@ with tab2:
         st.markdown("""
             <div style="text-align: center; margin: 30px 0;">
                 <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn">
-                    💳 立即線上信用卡升級 VIP（$48/月・即時回測心水號碼）
+                    💳 💳 立即線上信用卡升級 VIP（$48/月・即時回測心水號碼）
                 </a>
                 <p style="color: #777777; font-size: 13px; margin-top: 10px;">🔒 由 Stripe 官方安全加密提供支援，隨時可取消訂閱</p>
             </div>
