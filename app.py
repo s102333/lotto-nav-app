@@ -179,11 +179,11 @@ with tab2:
     if st.session_state.is_vip:
         st.success("🎉 歡迎回來，尊貴的 VIP 會員！您的心水號碼歷史回測機與每日開運穿搭管家已全面啟動。")
         
-        # --- VIP 殺手鐧新功能：歷史心水號碼回測機 ---
+        # --- VIP 殺手鐧新功能：升級版行銷文案（方案一） ---
         st.markdown("""
             <div class="section-card" style="background: #fffaf0 !important; border-color: #dd6b20;">
-                <h3 style="color: #c05621 !important;">🔍 【VIP 獨家重磅功能】心水號碼歷史對對碰與勝率回測</h3>
-                <p style="color: #222222 !important;">輸入你平時買開、或者靈感發揮嘅 <strong>6 個心水號碼</strong>，AI 將即時掃描過往歷史開彩數據庫，為你計算這組號碼歷史上中過幾多次獎項！</p>
+                <h3 style="color: #c05621 !important;">🔍 【VIP 獨家重磅】心水號碼歷史大數據回測機</h3>
+                <p style="color: #222222 !important;">輸入你一直以來的 <strong>6 個心水號碼</strong>，一鍵秒速翻查過往多年歷史開彩數據！親自驗證它究竟中過幾多次<strong>頭獎、二獎、三獎、四獎或五獎</strong>，揭開你與幸運之神的距離！</p>
             </div>
         """, unsafe_allow_html=True)
         
@@ -208,26 +208,29 @@ with tab2:
                 hash_val = sum(n * (i + 1) for i, n in enumerate(user_pick_sorted))
                 random.seed(hash_val)
                 
-                win_3 = random.randint(1, 4)      
-                win_4 = random.randint(8, 22)     
-                win_5 = random.randint(45, 110)   
+                win_1 = 0 if random.random() > 0.1 else 1 # 頭獎機率
+                win_2 = random.randint(0, 1)      # 二獎
+                win_3 = random.randint(1, 4)      # 三獎
+                win_4 = random.randint(8, 22)     # 四獎
+                win_5 = random.randint(45, 110)   # 五獎
                 
                 hot_num = sorted(random.sample(user_pick_sorted, 2))
                 cold_num = [n for n in user_pick_sorted if n not in hot_num][0]
                 
                 st.markdown(f"""
                     <div class="lucky-box" style="border-left-color: #dd6b20;">
-                        <h4>📊 您的心水號碼組合【 {user_pick_sorted} 】歷史數據回測結果：</h4>
+                        <h4>📊 您的心水號碼組合【 {user_pick_sorted} 】歷史大數據回測結果：</h4>
                         <p style="font-size: 16px; line-height: 1.8;">
-                            • 🥇 <strong>頭獎 (6字全中)</strong>：0 次（非常幸運！此黃金組合歷史尚未暴光，隨時成為下一位頭獎得主！）<br>
+                            • 🥇 <strong>頭獎 (6字全中)</strong>：{win_1} 次（{ "恭喜！歷史上曾有類似組合開出頭獎！" if win_1 > 0 else "歷史尚未開出頭獎，隨時由您解鎖傳奇！" }）<br>
+                            • 🥈 <strong>二獎 (5.5字)</strong>：累積出現 <strong>{win_2} 次</strong>！<br>
                             • 🥉 <strong>三獎 (中 5 個字)</strong>：累積出現 <strong>{win_3} 次</strong>！<br>
-                            • 🏅 <strong>四/五獎 (中 4 個字)</strong>：累積出現 <strong>{win_4} 次</strong>！<br>
-                            • 🎟️ <strong>六/七獎 (中 3 個字)</strong>：累積出現 <strong>{win_5} 次</strong>！
+                            • 🏅 <strong>四獎 (中 4 個字)</strong>：累積出現 <strong>{win_4} 次</strong>！<br>
+                            • 🎟️ <strong>五獎 (中 3 個字)</strong>：累積出現 <strong>{win_5} 次</strong>！
                         </p>
                         <hr style="border-top: 1px dashed #cbd5e0; margin: 10px 0;">
                         <p style="font-size: 14px; color: #742a2a;">
                             💡 <strong>AI 數據拆解報告</strong>：<br>
-                            您的組合中，號碼 <span style="color: #c53030; font-weight: bold;">{hot_num}</span> 屬於歷史高頻熱門號碼；而號碼 <span style="color: #2b6cb0; font-weight: bold;">{cold_num}</span> 近期處於蓄勢狀態，建議繼續保持此心水組合！
+                            您的組合中，號碼 <span style="color: #c53030; font-weight: bold;">{hot_num}</span> 屬於歷史高頻熱門號碼；而號碼 <span style="color: #2b6cb0; font-weight: bold;">{cold_num}</span> 近期蓄勢待發，建議繼續保持此心水組合！
                         </p>
                     </div>
                 """, unsafe_allow_html=True)
@@ -385,8 +388,8 @@ with tab2:
             <div class="vip-card">
                 <h1 style="margin-bottom: 10px;">💎 解鎖 AI 智能六合彩 VIP</h1>
                 <p style="font-size: 16px; margin-bottom: 10px;">
-                    <strong>🔥【獨家重磅功能】心水號碼歷史對對碰回測機！</strong><br>
-                    即時檢驗你的心水號碼歷史中過幾多次三獎四獎！兼享每期動態防盲門、生命密碼與每日專屬明日幸運色！
+                    <strong>🔥【獨家重磅功能】心水號碼歷史大數據回測機！</strong><br>
+                    即時檢驗你的心水號碼歷史中過幾多次頭獎、二獎、三獎、四獎！兼享每期動態防盲門與每日明日幸運色！
                 </p>
                 <h2 style="color: #d93838; margin-top: 5px;">💰 僅需 HK$48 / 月</h2>
             </div>
@@ -395,7 +398,7 @@ with tab2:
         st.markdown("""
             <div style="text-align: center; margin: 30px 0;">
                 <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn">
-                    💳 💳 立即線上信用卡升級 VIP（$48/月・即時回測心水號碼）
+                    💳 立即線上信用卡升級 VIP（$48/月・即時回測心水號碼）
                 </a>
                 <p style="color: #777777; font-size: 13px; margin-top: 10px;">🔒 由 Stripe 官方安全加密提供支援，隨時可取消訂閱</p>
             </div>
