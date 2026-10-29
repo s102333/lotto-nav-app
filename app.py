@@ -142,7 +142,7 @@ with tab1:
             random.seed(str(free_birthday))
             free_numbers = sorted(random.sample(range(1, 50), 6))
             st.success(f"🎯 依據您的生日（{free_birthday}）推算出的免費基礎號碼：**{free_numbers}**")
-            st.info("💡 提示：此為基礎隨機運算號碼。若要使用「每期實時動態剔除盲門」與「心水號碼歷史回測」的專業數據，請升級 VIP！")
+            st.info("💡 提示：此為基礎隨機運算號碼。若要解鎖「心水號碼歷史回測機」與「動態防盲門」，請升級 VIP！")
             
     st.markdown("""
         <div class="promo-banner">
@@ -157,29 +157,50 @@ with tab1:
         </div>
     """, unsafe_allow_html=True)
 
+    # --- 強力升級的 VIP 預告與文案 ---
     st.markdown("""
-        <div class="warning-box">
-            <h4>💡 為什麼免費版不夠用？為什麼一定要升級 VIP？</h4>
-            <p>真正的彩票大數據講求<strong>「時效性」與「深層對對碰」</strong>：</p>
-            <ul>
-                <li>🔍 <strong>【獨家】心水號碼歷史對對碰回測機</strong>：即時檢驗你的心水號碼在過去歷史中究竟中過幾多次三獎、四獎、五獎！</li>
-                <li>🔄 <strong>每期攪珠後即時更新</strong>：VIP 資料庫在每期開彩後第一時間更新，<strong>全面剔除歷史已開過的組合與盲門死角</strong>！</li>
-                <li>🎨 <strong>每日專屬個人幸運色</strong>：解決你每日諗「著咩衫」嘅頭痛煩惱，一石二鳥幫你出街返工兼催運！</li>
-                <li>🧬 <strong>多組不重疊生命密碼</strong>（可自由選 6 至 10 字，全面覆蓋防盲門）。</li>
-                <li>📊 <strong>AI 核心大數據運算</strong>（精準過濾高風險號碼，大幅提升勝率）。</li>
-                <li>🤝 <strong>智慧合買管理系統</strong>（與親友夾份買彩票時自動分帳、清楚記錄免爭執）。</li>
+        <div class="section-card" style="background: #fffaf0; border: 2px solid #dd6b20;">
+            <h3 style="color: #c05621; margin-top: 0;">🔍 停一停！你平時買開嗰 6 個「心水號碼」，究竟過去幾十年幫你中過幾多次獎？</h3>
+            <p style="font-size: 16px; color: #2d3748; line-height: 1.6;">
+                好多人買足幾十年六合彩，永遠唔知自己對住嗰組號碼其實係「財神爺」定係「白交學費」！<br>
+                <strong>🔥 VIP 尊貴會員區現已全面解鎖【心水號碼歷史大數據回測機】</strong>：<br>
+                輸入你一直以來的 6 個心水號碼，一鍵秒速翻查過往多年歷史開彩數據！親自驗證它究竟中過幾多次<strong>頭獎、二獎、三獎、四獎或五獎</strong>，徹底揭開你與幸運之神的真正距離！
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <div class="warning-box" style="background: #fff5f5; border-left: 5px solid #e53e3e; padding: 18px; border-radius: 8px;">
+            <h3 style="color: #c53030; margin-top: 0;">⚠️ 為什麼你必須馬上成為 VIP？（拒絕盲買，拒絕將錢掉落鹹水海！）</h3>
+            <p style="font-size: 15px; color: #2d3748;">
+                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong>「盲門死角」</strong>。解鎖 VIP，等於請了一個 24 小時幫你精準過濾數據的 AI 參謀：
+            </p>
+            <ul style="font-size: 15px; color: #2d3748; line-height: 1.8;">
+                <li>🔍 <strong>【震撼殺手鐧】心水號碼歷史大數據回測機</strong>：親自驗證你手頭上那組號碼過去究竟中過幾多次頭、二、三獎，拒絕盲目執著！</li>
+                <li>🔄 <strong>每期實時動態剔除盲門</strong>：全港獨家！每期攪珠後第一時間更新，自動幫你洗走歷史盲門死角，避開高風險陷阱。</li>
+                <li>🎨 <strong>一石二鳥「明日開運穿搭管家」</strong>：男士女士唔使再為「明天返工著咩衫」頭痛！系統每日自動批算專屬幸運色，番工出街兼旺財氣！</li>
+                <li>🧬 <strong>多組不重疊生命密碼（6 至 10 字任揀）</strong>：結合你的真實生辰八字與能量頻率，精準推演 3 組互不撞號的高勝率組合。</li>
+                <li>📊 <strong>AI 核心大數據走勢矩陣</strong>：結合最新冷熱門走勢與靈數模型，大幅提升命中率。</li>
+                <li>🤝 <strong>智慧合買與分帳管理系統</strong>：與同事、老友記夾份買彩票？系統自動幫你計好每人認購份數同應付金額，清楚無爭拗！</li>
             </ul>
         </div>
     """, unsafe_allow_html=True)
     
-    st.info("🔥 **想回測你的心水號碼中過幾多次？想解決每日穿衣頭痛？請點擊上方【💎 VIP 尊貴會員專區】僅需 HK$48/月即可解鎖！**")
+    st.markdown("""
+        <div style="text-align: center; margin: 25px 0;">
+            <a href="https://buy.stripe.com/5kQfZga357pKbCBdnU5Vu00" target="_blank" class="pay-btn" style="font-size: 20px; padding: 16px 36px;">
+                💎 立即解鎖全部 VIP 獨家功能（僅需 HK$48/月）
+            </a>
+            <p style="color: #718096; font-size: 13px; margin-top: 8px;">🔒 Stripe 官方加密結帳，隨時可自主取消訂閱，一杯咖啡錢換取專業數據導航！</p>
+        </div>
+    """, unsafe_allow_html=True)
 
 # --- Tab 2：VIP 尊貴會員專區 ---
 with tab2:
     if st.session_state.is_vip:
         st.success("🎉 歡迎回來，尊貴的 VIP 會員！您的心水號碼歷史回測機與每日開運穿搭管家已全面啟動。")
         
-        # --- VIP 殺手鐧新功能：升級版行銷文案（方案一） ---
+        # --- VIP 殺手鐧：心水號碼歷史回測機 ---
         st.markdown("""
             <div class="section-card" style="background: #fffaf0 !important; border-color: #dd6b20;">
                 <h3 style="color: #c05621 !important;">🔍 【VIP 獨家重磅】心水號碼歷史大數據回測機</h3>
@@ -409,7 +430,7 @@ with tab3:
     st.markdown("""
         <div class="section-card">
             <h3>⚙️ 帳戶與訂閱管理</h3>
-            <p>如果您已經是我們的 VIP 會員，您可以隨時前往管理中心查看訂單、更新信用卡或取消訂閱：</p>
+            <p>如果您已經是我們的 VIP 會員, 您可以隨時前往管理中心查看訂單、更新信用卡或取消訂閱：</p>
         </div>
     """, unsafe_allow_html=True)
     
