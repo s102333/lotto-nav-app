@@ -208,11 +208,11 @@ with tab2:
                 hash_val = sum(n * (i + 1) for i, n in enumerate(user_pick_sorted))
                 random.seed(hash_val)
                 
-                win_1 = 0 if random.random() > 0.1 else 1 # 頭獎機率
-                win_2 = random.randint(0, 1)      # 二獎
-                win_3 = random.randint(1, 4)      # 三獎
-                win_4 = random.randint(8, 22)     # 四獎
-                win_5 = random.randint(45, 110)   # 五獎
+                win_1 = 0 if random.random() > 0.1 else 1 
+                win_2 = random.randint(0, 1)      
+                win_3 = random.randint(1, 4)      
+                win_4 = random.randint(8, 22)     
+                win_5 = random.randint(45, 110)   
                 
                 hot_num = sorted(random.sample(user_pick_sorted, 2))
                 cold_num = [n for n in user_pick_sorted if n not in hot_num][0]
