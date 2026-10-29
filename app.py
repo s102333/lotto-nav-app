@@ -9,7 +9,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並加入吸睛發光與呼吸燈動態特效
+# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件與帳號徽章，並強制修正深色模式下的文字看不見問題
 st.markdown("""
     <style>
     #MainMenu {visibility: hidden !important;}
@@ -17,7 +17,9 @@ st.markdown("""
     header {visibility: hidden !important;}
     .stAppDeployButton {display: none !important;}
     div[data-testid="stToolbar"] {visibility: hidden !important;}
-    div[class*="viewerBadge"] {visibility: hidden !important;}
+    div[class*="viewerBadge"] {display: none !important; visibility: hidden !important;}
+    #GithubIcon {visibility: hidden !important;}
+    .viewerBadge_container__1QSob {display: none !important;}
     
     /* 強制全局文字在深色模式下保持清晰可見 */
     .stApp {
@@ -95,6 +97,34 @@ st.markdown("""
         color: #c53030 !important;
     }
     
+    /* 🌟 強制修正 Streamlit 原生成功、提示框在深色模式下變黑底看不見的問題 */
+    div.stSuccess {
+        background-color: #d4edda !important;
+        color: #155724 !important;
+    }
+    div.stSuccess p, div.stSuccess span {
+        color: #155724 !important;
+    }
+    div.stInfo {
+        background-color: #d1ecf1 !important;
+        color: #0c5460 !important;
+    }
+    div.stInfo p, div.stInfo span {
+        color: #0c5460 !important;
+    }
+    
+    /* 🌟 強制按鈕在手機深色模式下保持清晰醒目 */
+    .stButton button {
+        background-color: #ff4b4b !important;
+        color: #ffffff !important;
+        font-weight: bold !important;
+        border: none !important;
+    }
+    .stButton button:hover {
+        background-color: #e03e3e !important;
+        color: #ffffff !important;
+    }
+
     /* 🌟 超吸睛動態閃爍發光卡片（專門用來包裝今日限定 BONUS） */
     @keyframes glow-pulse {
         0% { box-shadow: 0 0 5px rgba(49,151,149, 0.4), 0 0 10px rgba(49,151,149, 0.2); border-color: #319795; }
@@ -167,7 +197,7 @@ with tab1:
         <div class="warning-box" style="background: #fff5f5; border-left: 5px solid #e53e3e; padding: 18px; border-radius: 8px;">
             <h3 style="color: #c53030; margin-top: 0;">⚠️ 為什麼你必須馬上成為 VIP？（拒絕盲買，拒絕將錢掉落鹹水海！）</h3>
             <p style="font-size: 15px; color: #2d3748;">
-                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong><span>「盲門死角」</span></strong>。解鎖 VIP，運用你的<strong>生命密碼</strong>作為最強導航：
+                出面求其買一個電腦飛都要 $10、$20，但盲目亂買只會陷入<strong>「盲門死角」</strong>。解鎖 VIP，運用你的<strong>生命密碼</strong>作為最強導航：
             </p>
             <ul style="font-size: 15px; color: #2d3748; line-height: 1.8;">
                 <li>🔍 <strong>【震撼殺手鐧】心水號碼歷史大數據回測機</strong>：親自驗證你手頭上那組號碼過去究竟中過幾多次頭、二、三獎，拒絕盲目執著！</li>
@@ -179,7 +209,7 @@ with tab1:
         </div>
     """, unsafe_allow_html=True)
     
-    # --- 拆出黎並加入動態發光特效的今日限定 BONUS 預告 ---
+    # --- 動態發光特效的今日限定 BONUS 預告 ---
     st.markdown("""
         <div class="bonus-glow-card">
             <h3 style="margin-top: 0;">🎁 ✨ 【今日限定 BONUS】明日專屬個人幸運顏色與穿搭指引</h3>
@@ -189,7 +219,7 @@ with tab1:
         </div>
     """, unsafe_allow_html=True)
     
-    # --- 根據是否已比錢（VIP 狀態）動態切換按鈕區 ---
+    # --- 根據是否已付費（VIP 狀態）動態切換按鈕區 ---
     if st.session_state.is_vip:
         st.markdown("""
             <div style="background: #e6fffa; border: 2px solid #319795; padding: 20px; border-radius: 12px; text-align: center; margin: 25px 0;">
