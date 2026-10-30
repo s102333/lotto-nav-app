@@ -9,19 +9,23 @@ st.set_page_config(
     layout="centered"
 )
 
-# 隱藏預設選單、標頭、底部標誌及右下角所有浮動物件，並徹底禁用右下角按鈕的任何點擊跳轉
+# 徹底隱藏 Streamlit 右下角所有官方選單、工具列及個人檔案跳轉連結
 st.markdown("""
     <style>
-    #MainMenu {visibility: hidden !important;}
-    footer {visibility: hidden !important;}
-    header {visibility: hidden !important;}
-    .stAppDeployButton {display: none !important;}
-    div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+    #MainMenu {visibility: hidden !important; display: none !important;}
+    footer {visibility: hidden !important; display: none !important;}
+    header {visibility: hidden !important; display: none !important;}
+    .stAppDeployButton {display: none !important; visibility: hidden !important;}
     
-    /* 徹底隱藏並禁用右下角 Streamlit / GitHub 標誌的互動與點擊 */
+    /* 徹底封鎖右下角所有 Streamlit 浮動選單與徽章 */
+    div[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
     div[class*="viewerBadge"] {display: none !important; visibility: hidden !important; pointer-events: none !important;}
+    div[class*="styles_viewerBadge"] {display: none !important; visibility: hidden !important;}
     #GithubIcon {visibility: hidden !important; display: none !important;}
-    .viewerBadge_container__1QSob {display: none !important; pointer-events: none !important;}
+    .viewerBadge_container__1QSob {display: none !important; visibility: hidden !important;}
+    
+    /* 強制隱藏畫面右下角任何懸浮按鈕 */
+    .reportview-container .main footer {visibility: hidden !important;}
     
     /* 強制全局文字在深色模式下保持清晰可見 */
     .stApp {
